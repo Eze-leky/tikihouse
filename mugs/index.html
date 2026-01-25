@@ -47,6 +47,17 @@
             transform: translateY(-5px);
             box-shadow: 0 20px 40px -10px rgba(245, 158, 11, 0.2);
         }
+
+        /* Estilos para productos sin stock */
+        .out-of-stock {
+            opacity: 0.6;
+        }
+        
+        .out-of-stock:hover {
+            transform: translateY(0);
+            border-color: #44403c;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.8);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -91,7 +102,7 @@
             </div>
 
             <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                </div>
+            </div>
         </div>
     </main>
 
@@ -114,14 +125,14 @@
     <script>
         // --- DATOS DE PRODUCTOS (Simulación de Base de Datos) ---
         const products = [
-            { name: "Zombie", price: "30.000", img: "img/zombie.jpg", wa_link: "Zombie!", tag: "Clásico" },
-            { name: "Shark Attack", price: "40.000", img: "img/sharknuevo.jpg", wa_link: "Shark!", tag: "Best Seller" },
-            { name: "Dr. Funk", price: "30.000", img: "img/funk.jpg", wa_link: "Dr.%20Funk!" },
-            { name: "Sunset Spirit", price: "30.000", img: "img/risas.jpg", wa_link: "Sunset%20Spirit!" },
-            { name: "Esqueleto", price: "30.000", img: "img/esqueleto.jpg", wa_link: "Mug%20Esqueleto!", tag: "Terror Tiki" },
-            { name: "Maui God", price: "30.000", img: "img/moha.jpg", wa_link: "Mug%20Maui!" },
-            { name: "Zombie V2", price: "30.000", img: "img/zombie2.jpeg", wa_link: "Zombie2!", detail: "2 Colores Disp." },
-            { name: "Kanaloa", price: "20.000", img: "img/kanaloaa.jpg", wa_link: "Kanaloa!", detail: "Oferta Especial" }
+            { name: "Zombie", price: "30.000", img: "img/zombie.jpg", wa_link: "Zombie!", tag: "Clásico", inStock: true },
+            { name: "Shark Attack", price: "40.000", img: "img/sharknuevo.jpg", wa_link: "Shark!", tag: "Best Seller", inStock: true },
+            { name: "Dr. Funk", price: "30.000", img: "img/funk.jpg", wa_link: "Dr.%20Funk!", inStock: true },
+            { name: "Sunset Spirit", price: "30.000", img: "img/risas.jpg", wa_link: "Sunset%20Spirit!", inStock: true },
+            { name: "Esqueleto", price: "30.000", img: "img/esqueleto.jpg", wa_link: "Mug%20Esqueleto!", tag: "Terror Tiki", inStock: false },
+            { name: "Maui God", price: "30.000", img: "img/moha.jpg", wa_link: "Mug%20Maui!", inStock: true },
+            { name: "Zombie V2", price: "30.000", img: "img/zombie2.jpeg", wa_link: "Zombie2!", detail: "2 Colores Disp.", inStock: true },
+            { name: "Kanaloa", price: "20.000", img: "img/kanaloaa.jpg", wa_link: "Kanaloa!", detail: "Oferta Especial", inStock: true }
         ];
 
         // --- RENDERIZADO DE PRODUCTOS ---
@@ -130,37 +141,63 @@
         products.forEach(product => {
             // Lógica para etiquetas (tags)
             let tagHTML = '';
-            if (product.tag) {
+            if (product.tag && product.inStock) {
                 // Diferentes colores según el tag
                 const tagColor = product.tag === 'Best Seller' ? 'bg-amber-500' : 'bg-stone-700';
                 tagHTML = `<span class="absolute top-4 right-4 ${tagColor} text-stone-900 text-xs font-bold px-3 py-1 rounded-full z-20 shadow-lg">${product.tag}</span>`;
+            } else if (!product.inStock) {
+                // Etiqueta de sin stock
+                tagHTML = `<span class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full z-20 shadow-lg">Sin Stock</span>`;
+            }
+
+            // Clase adicional si está sin stock
+            const stockClass = product.inStock ? '' : 'out-of-stock';
+
+            // Botón de compra o notificación
+            let actionButton = '';
+            if (product.inStock) {
+                actionButton = `
+                    <a href="https://wa.me/5492216005043?text=Hola!%20Quiero%20el%20${product.wa_link}" target="_blank" 
+                       class="bg-gradient-to-br from-green-600 to-green-700 hover:from-amber-500 hover:to-orange-600 text-white p-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-amber-500/30 active:scale-95">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.926 1.672L3.182 15.75c-.126.738.443 1.5 1.192 1.5h15.253c.749 0 1.318-.762 1.192-1.5L20.413 8.422c-.162-.948-.966-1.672-1.926-1.672H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a3 3 0 1 0-6 0v.75Z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                `;
+            } else {
+                actionButton = `
+                    <a href="https://wa.me/5492216005043?text=Hola!%20Me%20interesa%20el%20${product.wa_link}%20Avisame%20cuando%20haya%20stock!" target="_blank" 
+                       class="bg-gradient-to-br from-stone-600 to-stone-700 hover:from-stone-500 hover:to-stone-600 text-white p-3 rounded-xl transition-all duration-300 shadow-lg active:scale-95">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+                            <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+                        </svg>
+                    </a>
+                `;
             }
 
             const cardHTML = `
-                <div class="premium-card rounded-3xl p-4 group transition-all duration-500 relative">
+                <div class="premium-card ${stockClass} rounded-3xl p-4 group transition-all duration-500 relative">
                     <div class="relative overflow-hidden rounded-2xl aspect-[4/5] mb-5 bg-stone-900/50">
                         ${tagHTML}
                         <div class="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60 z-10 pointer-events-none"></div>
+                        ${!product.inStock ? '<div class="absolute inset-0 bg-black/40 z-10 flex items-center justify-center pointer-events-none"><span class="text-white font-bold text-2xl opacity-80 rotate-[-15deg] transform">AGOTADO</span></div>' : ''}
                         <img src="${product.img}" alt="${product.name}" 
-                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1 cursor-zoom-in relative z-0"
-                             onclick="openModal('${product.img}')"
-                             onerror="this.src='https://placehold.co/400x500/1c1917/f59e0b?text=Tiki+Mug';"> </div>
+                             class="w-full h-full object-cover transition-transform duration-700 ${product.inStock ? 'group-hover:scale-110 group-hover:rotate-1 cursor-zoom-in' : ''} relative z-0"
+                             ${product.inStock ? `onclick="openModal('${product.img}')"` : ''}
+                             onerror="this.src='https://placehold.co/400x500/1c1917/f59e0b?text=Tiki+Mug';">
+                    </div>
 
                     <div class="px-2 pb-2">
                         <h3 class="font-bold text-xl mb-1 text-stone-100 group-hover:text-amber-400 transition-colors">${product.name}</h3>
                         <p class="text-stone-500 text-sm mb-4 font-medium">${product.detail || 'Cerámica Esmaltada'}</p>
                         
-                        <div class="flex items-center justify-between p-3 bg-stone-900/50 rounded-2xl border border-stone-800 group-hover:border-amber-900/50 transition-colors">
+                        <div class="flex items-center justify-between p-3 bg-stone-900/50 rounded-2xl border border-stone-800 ${product.inStock ? 'group-hover:border-amber-900/50' : ''} transition-colors">
                             <div class="flex flex-col">
                                 <span class="text-xs text-stone-500 font-bold">Precio</span>
-                                <span class="text-2xl font-bold text-amber-500">$${product.price}</span>
+                                <span class="text-2xl font-bold ${product.inStock ? 'text-amber-500' : 'text-stone-600'}">${product.inStock ? '$' + product.price : 'Agotado'}</span>
                             </div>
-                            <a href="https://wa.me/5492216005043?text=Hola!%20Quiero%20el%20${product.wa_link}" target="_blank" 
-                               class="bg-gradient-to-br from-green-600 to-green-700 hover:from-amber-500 hover:to-orange-600 text-white p-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-amber-500/30 active:scale-95">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                                    <path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.926 1.672L3.182 15.75c-.126.738.443 1.5 1.192 1.5h15.253c.749 0 1.318-.762 1.192-1.5L20.413 8.422c-.162-.948-.966-1.672-1.926-1.672H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a3 3 0 1 0-6 0v.75Z" clip-rule="evenodd" />
-                                </svg>
-                            </a>
+                            ${actionButton}
                         </div>
                     </div>
                 </div>
@@ -193,4 +230,3 @@
     </script>
 </body>
 </html>
-
