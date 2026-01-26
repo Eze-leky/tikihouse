@@ -37,11 +37,25 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: var(--font-body);
             background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
             color: var(--light);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Prevent text size adjustment on mobile */
+        body {
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
         }
 
         /* Animated Background */
@@ -575,6 +589,8 @@
         @media (max-width: 768px) {
             .mobile-toggle {
                 display: block;
+                font-size: 2rem;
+                padding: 0.5rem;
             }
 
             .nav-menu {
@@ -585,7 +601,7 @@
                 background: rgba(26, 26, 46, 0.98);
                 flex-direction: column;
                 padding: 2rem;
-                gap: 1rem;
+                gap: 1.5rem;
                 transform: translateY(-100%);
                 opacity: 0;
                 pointer-events: none;
@@ -598,25 +614,193 @@
                 pointer-events: all;
             }
 
+            .nav-link {
+                font-size: 1.2rem;
+                padding: 0.5rem 0;
+            }
+
+            .hero {
+                height: 500px;
+                margin-top: 70px;
+            }
+
             .hero-title {
-                font-size: 3rem;
+                font-size: 2.5rem;
+                line-height: 1.2;
             }
 
             .hero-subtitle {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+            }
+
+            .hero-cta {
+                font-size: 1.1rem;
+                padding: 1rem 2rem;
             }
 
             .section-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .section-title::after {
+                width: 80px;
             }
 
             .cocktails-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cocktail-card {
+                margin: 0;
+            }
+
+            .cocktail-image {
+                height: 250px;
+            }
+
+            .cocktail-info {
+                padding: 1.5rem;
+            }
+
+            .cocktail-name {
+                font-size: 1.8rem;
+            }
+
+            .cocktail-price {
+                font-size: 1.4rem;
+            }
+
+            .cocktail-ingredients,
+            .cocktail-description {
+                font-size: 0.95rem;
             }
 
             .modal-content {
                 margin: 1rem;
-                padding: 2rem;
+                padding: 2rem 1.5rem;
+                max-width: 90%;
+            }
+
+            .modal-content h2 {
+                font-size: 2rem;
+            }
+
+            .modal-content p {
+                font-size: 1rem;
+            }
+
+            .modal-btn {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+            }
+
+            .wednesday-banner {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            .wednesday-banner h2 {
+                font-size: 1.8rem;
+            }
+
+            .wednesday-banner p {
+                font-size: 1rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .feature-icon {
+                font-size: 3rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.7rem;
+            }
+
+            .feature-btn {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+            }
+
+            .menu-table {
+                font-size: 0.9rem;
+            }
+
+            .menu-table th,
+            .menu-table td {
+                padding: 1rem;
+            }
+
+            .menu-table th {
+                font-size: 1.1rem;
+            }
+
+            .price {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            /* Better touch targets for mobile */
+            .nav-link,
+            .hero-cta,
+            .feature-btn,
+            .modal-btn {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Improve readability on mobile */
+            body {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+            /* Make tables scroll horizontally if needed */
+            .menu-table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .cocktail-name {
+                font-size: 1.6rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .modal-content h2 {
+                font-size: 1.7rem;
+            }
+
+            .wednesday-banner h2 {
+                font-size: 1.5rem;
             }
         }
 
@@ -849,6 +1033,11 @@
     </footer>
 
     <script>
+        // ============================================
+        // MODO DE PRUEBA: Cambia esto a true para probar el modo miércoles
+        // ============================================
+        const TEST_WEDNESDAY_MODE = false; // Cambia a true para probar
+        
         // Cocktails Data
         const regularCocktails = [
             {
@@ -1010,28 +1199,43 @@
 
         // Check if today is Wednesday
         function isWednesday() {
-            return new Date().getDay() === 3;
+            // Si el modo de prueba está activado, siempre retorna true
+            if (TEST_WEDNESDAY_MODE) {
+                console.log('🧪 MODO DE PRUEBA ACTIVADO - Mostrando como miércoles');
+                return true;
+            }
+            
+            const today = new Date();
+            const day = today.getDay();
+            console.log('📅 Hoy es:', ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'][day]);
+            console.log('🎯 ¿Es miércoles?', day === 3);
+            return day === 3;
         }
 
         // Initialize menu
         function initMenu() {
-            const cocktailsToShow = isWednesday() ? wednesdayCocktails : regularCocktails;
+            const isWed = isWednesday();
+            const cocktailsToShow = isWed ? wednesdayCocktails : regularCocktails;
             const cocktailsGrid = document.getElementById('cocktailsGrid');
             const wednesdayBanner = document.getElementById('wednesdayBanner');
 
             // Show Wednesday banner if it's Wednesday
-            if (isWednesday()) {
+            if (isWed) {
+                console.log('¡Mostrando contenido de miércoles!');
                 wednesdayBanner.style.display = 'block';
                 wednesdayBanner.innerHTML = `
                     <div class="wednesday-banner">
                         <h2>🎉 ¡ESPECIAL MIÉRCOLES! 🎉</h2>
-                        <p>2x1 en Daiquiris Frozen y Espresso Martini de 19:00 a 21:30hs</p>
+                        <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem;">2x1 en Daiquiris Frozen y Espresso Martini</p>
+                        <p style="font-size: 1.1rem;">De 19:00 a 21:30hs</p>
                     </div>
                 `;
 
                 // Update modal for Wednesday
                 document.getElementById('modalTitle').innerHTML = '🎉 ¡Es Miércoles de Promos! 🎉';
-                document.getElementById('modalText').innerHTML = 'Hoy de 19:00 a 21:30hs tenemos 2x1 en Daiquiris Frozen y Espresso Martini. ¡Acércate a la barra para ordenar!';
+                document.getElementById('modalText').innerHTML = '<strong>Hoy de 19:00 a 21:30hs tenemos 2x1</strong> en Daiquiris Frozen Saborizados y Espresso Martini. ¡Acércate a la barra para ordenar!';
+            } else {
+                console.log('Mostrando carta regular');
             }
 
             // Render cocktails
@@ -1041,12 +1245,13 @@
                     <div class="cocktail-info">
                         <h3 class="cocktail-name">${cocktail.name}</h3>
                         <p class="cocktail-price">
-                            ${cocktail.originalPrice ? `<span style="text-decoration: line-through; opacity: 0.5;">${cocktail.originalPrice}</span> ` : ''}
+                            ${cocktail.originalPrice ? `<span style="text-decoration: line-through; opacity: 0.6; font-size: 0.9rem;">${cocktail.originalPrice}</span><br>` : ''}
                             ${cocktail.price}
+                            ${cocktail.originalPrice ? ' <span style="background: #4CAF50; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-left: 0.5rem;">2x1</span>' : ''}
                         </p>
-                        <p class="cocktail-ingredients">${cocktail.ingredients}</p>
+                        <p class="cocktail-ingredients"><strong>Ingredientes:</strong> ${cocktail.ingredients}</p>
                         <p class="cocktail-description">${cocktail.description}</p>
-                        <span class="cocktail-profile">${cocktail.profile}</span>
+                        <span class="cocktail-profile">📋 ${cocktail.profile}</span>
                     </div>
                 </div>
             `).join('');
@@ -1114,4 +1319,3 @@
     </script>
 </body>
 </html>
-
