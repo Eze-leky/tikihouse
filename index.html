@@ -14,7 +14,6 @@
     
     <style>
         :root {
-            /* Color Palette - Tropical Vibes */
             --primary: #FF6B9D;
             --secondary: #00D4AA;
             --accent: #FFC107;
@@ -24,41 +23,21 @@
             --ocean: #00B4D8;
             --sunset: #FF4E50;
             --lime: #98FB98;
-            
-            /* Typography */
             --font-display: 'Playfair Display', serif;
             --font-fun: 'Fredoka', sans-serif;
             --font-body: 'Poppins', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-body);
             background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
             color: var(--light);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Prevent text size adjustment on mobile */
-        body {
-            -webkit-text-size-adjust: 100%;
-            -moz-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            text-size-adjust: 100%;
-        }
-
-        /* Animated Background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -80,7 +59,6 @@
             66% { transform: translate(-30px, 50px) scale(0.9); }
         }
 
-        /* Welcome Messages */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -147,7 +125,6 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
-        /* Navigation */
         .navbar {
             background: rgba(26, 26, 46, 0.95);
             backdrop-filter: blur(10px);
@@ -174,14 +151,11 @@
             background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
             text-decoration: none;
             transition: transform 0.3s ease;
         }
 
-        .logo:hover {
-            transform: scale(1.05);
-        }
+        .logo:hover { transform: scale(1.05); }
 
         .nav-menu {
             display: flex;
@@ -208,13 +182,8 @@
             transition: width 0.3s ease;
         }
 
-        .nav-link:hover {
-            color: var(--primary);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
+        .nav-link:hover { color: var(--primary); }
+        .nav-link:hover::after { width: 100%; }
 
         .mobile-toggle {
             display: none;
@@ -225,25 +194,14 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
         .hero {
             margin-top: 80px;
-            height: 600px;
+            height: 500px;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.3;
         }
 
         .hero-content {
@@ -262,7 +220,6 @@
             background: linear-gradient(135deg, var(--primary), var(--accent), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
             animation: fadeInUp 1s ease;
         }
 
@@ -293,32 +250,141 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Main Content */
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 2rem 2rem 4rem;
+        }
+
+        .special-banner {
+            margin-bottom: 2rem;
+        }
+
+        .banner-content {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .banner-content.classic {
+            background: linear-gradient(135deg, #2C3E50, #34495E);
+        }
+
+        .banner-content h2 {
+            font-family: var(--font-fun);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .banner-content p {
+            font-size: 1rem;
+            margin: 0.3rem 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .featured-cards {
+            margin-bottom: 3rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(0, 212, 170, 0.1));
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: 2px solid rgba(255, 107, 157, 0.3);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .feature-card:hover::before { opacity: 0.1; }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(255, 107, 157, 0.4);
+        }
+
+        .feature-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 5px 15px rgba(255, 107, 157, 0.3));
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .feature-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--sunset));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .feature-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 107, 157, 0.5);
         }
 
         .section-title {
             font-family: var(--font-display);
             font-size: 3.5rem;
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
             position: relative;
         }
 
@@ -334,12 +400,11 @@
             border-radius: 2px;
         }
 
-        /* Cocktail Cards */
         .cocktails-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
 
         .cocktail-card {
@@ -365,13 +430,9 @@
             transition: transform 0.4s ease;
         }
 
-        .cocktail-card:hover .cocktail-image {
-            transform: scale(1.1);
-        }
+        .cocktail-card:hover .cocktail-image { transform: scale(1.1); }
 
-        .cocktail-info {
-            padding: 2rem;
-        }
+        .cocktail-info { padding: 2rem; }
 
         .cocktail-name {
             font-family: var(--font-display);
@@ -409,7 +470,6 @@
             margin-top: 1rem;
         }
 
-        /* Tables */
         .menu-table {
             width: 100%;
             background: rgba(255, 255, 255, 0.05);
@@ -445,7 +505,6 @@
             font-size: 1.1rem;
         }
 
-        /* Footer */
         footer {
             background: var(--darker);
             padding: 3rem 2rem;
@@ -454,138 +513,25 @@
             border-top: 2px solid var(--primary);
         }
 
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
         .footer-link {
             color: var(--primary);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .footer-link:hover {
-            color: var(--secondary);
-        }
+        .footer-link:hover { color: var(--secondary); }
 
-        /* Wednesday Special Styles */
-        .wednesday-banner {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            padding: 2rem;
-            text-align: center;
-            border-radius: 20px;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .wednesday-banner h2 {
-            font-family: var(--font-fun);
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-
-        .wednesday-banner p {
-            font-size: 1.2rem;
-            color: var(--darker);
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-
-        /* Featured Cards */
-        .featured-cards {
-            margin-top: 4rem;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(0, 212, 170, 0.1));
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 3rem 2rem;
-            text-align: center;
-            border: 2px solid rgba(255, 107, 157, 0.3);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        .fade-in {
             opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
         }
 
-        .feature-card:hover::before {
-            opacity: 0.1;
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 60px rgba(255, 107, 157, 0.4);
-        }
-
-        .feature-card > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 5px 15px rgba(255, 107, 157, 0.3));
-        }
-
-        .feature-card h3 {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .feature-card p {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .feature-btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--sunset));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.3);
-        }
-
-        .feature-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(255, 107, 157, 0.5);
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
             .mobile-toggle {
                 display: block;
@@ -614,13 +560,8 @@
                 pointer-events: all;
             }
 
-            .nav-link {
-                font-size: 1.2rem;
-                padding: 0.5rem 0;
-            }
-
             .hero {
-                height: 500px;
+                height: 400px;
                 margin-top: 70px;
             }
 
@@ -629,53 +570,45 @@
                 line-height: 1.2;
             }
 
-            .hero-subtitle {
-                font-size: 1.1rem;
+            .hero-subtitle { font-size: 1.1rem; }
+            .hero-cta { font-size: 1rem; padding: 0.9rem 2rem; }
+
+            .container { padding: 1.5rem 1rem 3rem; }
+            
+            .special-banner { margin-bottom: 1.5rem; }
+            
+            .banner-content {
+                padding: 1.2rem;
+            }
+            
+            .banner-content h2 { font-size: 1.6rem; }
+            .banner-content p { font-size: 0.95rem; }
+
+            .featured-cards { margin-bottom: 2rem; }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
-            .hero-cta {
-                font-size: 1.1rem;
-                padding: 1rem 2rem;
-            }
+            .feature-card { padding: 2rem 1.5rem; }
+            .feature-icon { font-size: 3rem; }
+            .feature-card h3 { font-size: 1.6rem; }
 
             .section-title {
                 font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            .section-title::after {
-                width: 80px;
+                margin-bottom: 1.5rem;
             }
 
             .cocktails-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                margin-top: 2rem;
             }
 
-            .cocktail-card {
-                margin: 0;
-            }
-
-            .cocktail-image {
-                height: 250px;
-            }
-
-            .cocktail-info {
-                padding: 1.5rem;
-            }
-
-            .cocktail-name {
-                font-size: 1.8rem;
-            }
-
-            .cocktail-price {
-                font-size: 1.4rem;
-            }
-
-            .cocktail-ingredients,
-            .cocktail-description {
-                font-size: 0.95rem;
-            }
+            .cocktail-image { height: 250px; }
+            .cocktail-info { padding: 1.5rem; }
+            .cocktail-name { font-size: 1.8rem; }
 
             .modal-content {
                 margin: 1rem;
@@ -683,144 +616,23 @@
                 max-width: 90%;
             }
 
-            .modal-content h2 {
-                font-size: 2rem;
-            }
+            .modal-content h2 { font-size: 2rem; }
+            .modal-content p { font-size: 1rem; }
 
-            .modal-content p {
-                font-size: 1rem;
-            }
-
-            .modal-btn {
-                padding: 0.9rem 2rem;
-                font-size: 1rem;
-            }
-
-            .wednesday-banner {
-                padding: 1.5rem;
-                margin: 1rem;
-            }
-
-            .wednesday-banner h2 {
-                font-size: 1.8rem;
-            }
-
-            .wednesday-banner p {
-                font-size: 1rem;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .feature-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .feature-icon {
-                font-size: 3rem;
-            }
-
-            .feature-card h3 {
-                font-size: 1.7rem;
-            }
-
-            .feature-btn {
-                padding: 0.9rem 2rem;
-                font-size: 1rem;
-            }
-
-            .menu-table {
-                font-size: 0.9rem;
-            }
-
-            .menu-table th,
-            .menu-table td {
-                padding: 1rem;
-            }
-
-            .menu-table th {
-                font-size: 1.1rem;
-            }
-
-            .price {
-                font-size: 1rem;
-            }
-
-            .container {
-                padding: 2rem 1rem;
-            }
-
-            /* Better touch targets for mobile */
-            .nav-link,
-            .hero-cta,
-            .feature-btn,
-            .modal-btn {
-                min-height: 44px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            /* Improve readability on mobile */
-            body {
-                font-size: 16px;
-                line-height: 1.6;
-            }
-
-            /* Make tables scroll horizontally if needed */
-            .menu-table {
-                display: block;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
+            .menu-table th, .menu-table td { padding: 1rem; }
         }
 
-        /* Extra small devices */
         @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 1.7rem;
-            }
-
-            .cocktail-name {
-                font-size: 1.6rem;
-            }
-
-            .logo {
-                font-size: 1.5rem;
-            }
-
-            .modal-content h2 {
-                font-size: 1.7rem;
-            }
-
-            .wednesday-banner h2 {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .hero-title { font-size: 2rem; }
+            .section-title { font-size: 1.7rem; }
+            .logo { font-size: 1.5rem; }
+            .banner-content h2 { font-size: 1.4rem; }
         }
     </style>
 </head>
 <body>
     <div class="bg-animation"></div>
 
-    <!-- Welcome Modal -->
     <div id="welcomeModal" class="modal-overlay">
         <div class="modal-content">
             <h2 id="modalTitle">🌴 ¡Bienvenidos a Tiki House! 🌴</h2>
@@ -829,7 +641,6 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">🗿 Tiki House Bar</a>
@@ -844,22 +655,18 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">Paraíso Tropical</h1>
-            <p class="hero-subtitle">Cocteles exóticos únicos en La Plata</p>
+            <p class="hero-subtitle">Cocteles exóticos únicos en Buenos Aires</p>
             <a href="#cocktails" class="hero-cta">Explorar Carta 🌺</a>
         </div>
     </section>
 
-    <!-- Main Content -->
     <main class="container">
-        <!-- Wednesday Banner (shown only on Wednesdays) -->
-        <div id="wednesdayBanner" style="display: none;"></div>
+        <div id="specialBanner" class="special-banner" style="display: none;"></div>
 
-        <!-- Featured Cards Section -->
-        <section class="featured-cards" style="margin-bottom: 6rem;">
+        <section class="featured-cards">
             <div class="cards-grid">
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🗿</div>
@@ -876,17 +683,12 @@
             </div>
         </section>
 
-        <!-- Cocktails Section -->
         <section id="cocktails">
-            <h2 class="section-title">Nuestros Cocteles Tiki</h2>
-            
-            <div class="cocktails-grid" id="cocktailsGrid">
-                <!-- Cocktails will be dynamically inserted here -->
-            </div>
+            <h2 class="section-title" id="cocktailsTitle">Nuestros Cocteles Tiki</h2>
+            <div class="cocktails-grid" id="cocktailsGrid"></div>
         </section>
 
-        <!-- Classic Cocktails -->
-        <section id="clasicos" style="margin-top: 6rem;">
+        <section id="clasicos" style="margin-top: 5rem;">
             <h2 class="section-title fade-in">Cocteles Clásicos</h2>
             <table class="menu-table fade-in">
                 <thead>
@@ -895,14 +697,11 @@
                         <th>Precio</th>
                     </tr>
                 </thead>
-                <tbody id="classicCocktails">
-                    <!-- Classic cocktails will be inserted here -->
-                </tbody>
+                <tbody id="classicCocktails"></tbody>
             </table>
         </section>
 
-        <!-- Beers -->
-        <section id="cervezas" style="margin-top: 6rem;">
+        <section id="cervezas" style="margin-top: 5rem;">
             <h2 class="section-title fade-in">Cervezas</h2>
             <table class="menu-table fade-in">
                 <thead>
@@ -913,21 +712,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Corona</td>
-                        <td>330ml</td>
-                        <td class="price">$7.000</td>
-                    </tr>
-                    <tr>
-                        <td>Heineken</td>
-                        <td>500ml</td>
-                        <td class="price">$9.500</td>
-                    </tr>
+                    <tr><td>Corona</td><td>330ml</td><td class="price">$7.000</td></tr>
+                    <tr><td>Heineken</td><td>500ml</td><td class="price">$9.500</td></tr>
                 </tbody>
             </table>
         </section>
 
-        <!-- Whisky -->
         <section style="margin-top: 4rem;">
             <h2 class="section-title fade-in">Whisky - Whiskey</h2>
             <table class="menu-table fade-in">
@@ -953,8 +743,7 @@
             </table>
         </section>
 
-        <!-- Non-Alcoholic -->
-        <section id="sin-alcohol" style="margin-top: 6rem;">
+        <section id="sin-alcohol" style="margin-top: 5rem;">
             <h2 class="section-title fade-in">Sin Alcohol</h2>
             <table class="menu-table fade-in">
                 <thead>
@@ -972,57 +761,18 @@
             </table>
         </section>
 
-        <!-- Food -->
-        <section id="comida" style="margin-top: 6rem;">
+        <section id="comida" style="margin-top: 5rem;">
             <h2 class="section-title fade-in">Comidas</h2>
-            
-            <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🍕 Pizzas</h3>
-            <table class="menu-table fade-in">
-                <tbody>
-                    <tr><td>Mozzarella</td><td class="price">$16.000</td></tr>
-                    <tr><td>Especial</td><td class="price">$18.000</td></tr>
-                    <tr><td>Roquefort</td><td class="price">$22.000</td></tr>
-                </tbody>
-            </table>
-
-            <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🍔 Hamburguesas</h3>
-            <p style="text-align: center; color: var(--secondary); margin-bottom: 1rem;">Todas vienen con papas</p>
-            <table class="menu-table fade-in">
-                <tbody>
-                    <tr><td>Clásica <span style="font-size: 0.85rem; opacity: 0.7;">(Medallón 120gr, Queso Cheddar)</span></td><td class="price">$16.000</td></tr>
-                    <tr><td>Completa <span style="font-size: 0.85rem; opacity: 0.7;">(Medallón 120gr, Jamón, Queso, Huevo, Lechuga, Tomate)</span></td><td class="price">$20.000</td></tr>
-                    <tr><td>Big Tiki <span style="font-size: 0.85rem; opacity: 0.7;">(Doble Medallón, Cheddar, Cebolla, Lechuga)</span></td><td class="price">$25.000</td></tr>
-                </tbody>
-            </table>
-
-            <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🍟 Papas</h3>
-            <table class="menu-table fade-in">
-                <tbody>
-                    <tr><td>Papas Tiki (Cheddar, Bacon, Verdeo)</td><td class="price">$15.000</td></tr>
-                    <tr><td>Cheddar</td><td class="price">$13.000</td></tr>
-                    <tr><td>Spicy</td><td class="price">$10.000</td></tr>
-                    <tr><td>Clásicas (Salsa a elección)</td><td class="price">$10.000</td></tr>
-                </tbody>
-            </table>
-
-            <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🇻🇪 Tequeños Venezolanos</h3>
-            <table class="menu-table fade-in">
-                <tbody>
-                    <tr><td>6 Unidades</td><td class="price">$10.000</td></tr>
-                    <tr><td>12 Unidades</td><td class="price">$18.000</td></tr>
-                </tbody>
-            </table>
+            <div id="foodMenu"></div>
         </section>
 
-        <!-- Google Review CTA -->
-        <section style="margin-top: 6rem; text-align: center; padding: 3rem; background: rgba(255, 107, 157, 0.1); border-radius: 25px;">
+        <section style="margin-top: 5rem; text-align: center; padding: 3rem; background: rgba(255, 107, 157, 0.1); border-radius: 25px;">
             <h2 style="font-family: var(--font-fun); font-size: 2.5rem; margin-bottom: 1rem;">💬 Tu Opinión Importa</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem; line-height: 1.6;">¡Comparte tu experiencia en Tiki House! Tus comentarios nos ayudan a mejorar y a crear el mejor paraíso tropical para ti.</p>
-            <a href="https://g.page/r/Caw83WM1wKHrEBM/review" class="hero-cta" target="_blank">Dejar Comentario en Google ⭐</a>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; line-height: 1.6;">¡Comparte tu experiencia en Tiki House! Tus comentarios nos ayudan a mejorar.</p>
+            <a href="https://g.page/r/Caw83WM1wKHrEBM/review" class="hero-cta" target="_blank">Dejar Comentario ⭐</a>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 Tiki House Bar - Buenos Aires</p>
@@ -1033,19 +783,16 @@
     </footer>
 
     <script>
-        // ============================================
-        // MODO DE PRUEBA: Cambia esto a true para probar el modo miércoles
-        // ============================================
-        const TEST_WEDNESDAY_MODE = true; // Cambia a true para probar
-        
-        // Cocktails Data
+        const TEST_MODE = false;
+        const TEST_DAY = 'wednesday';
+
         const regularCocktails = [
             {
                 name: "Zombie",
                 price: "$8.500",
                 image: "./assets/img/zombieee.jpg",
                 ingredients: "Ron Blanco, Ron Dorado, Falernum, Lima, Pomelo, Canela y mucho FUEGO!",
-                description: "El Zombie es un cóctel tiki legendario, creado en 1934 por Donn Beach. Famoso por 'revivir a los muertos'. Tradicionalmente limitado a 2 por persona por su alto contenido alcohólico.",
+                description: "El Zombie es un cóctel tiki legendario, creado en 1934 por Donn Beach. Famoso por 'revivir a los muertos'.",
                 profile: "Agridulce, Especiado"
             },
             {
@@ -1053,7 +800,7 @@
                 price: "$8.500",
                 image: "./assets/img/tikibarrel.jpg",
                 ingredients: "Ron Blanco, Ron Dorado, Maracuyá, Lima, Naranja, Ananá, Banana y Vainilla",
-                description: "Una de las estrellas de la casa. Una combinación perfecta entre el dulce y un toque cítrico. La cura perfecta para un corazón roto.",
+                description: "Una de las estrellas de la casa. Combinación perfecta entre dulce y cítrico. La cura para un corazón roto.",
                 profile: "Dulce"
             },
             {
@@ -1061,7 +808,7 @@
                 price: "$8.500",
                 image: "./assets/img/sharknuevo.jpg",
                 ingredients: "Ron Blanco, Ron Dorado, Syrup de Frambuesas, Cynar, Vermut Rosso, Ananá y Lima",
-                description: "Una versión de Ludovico De Biaggi del coctel Shark Tooth. Con notas amargas que te invitan a dejarte atrapar por los dientes de nuestro Shark.",
+                description: "Versión de Ludovico De Biaggi del Shark Tooth. Con notas amargas que te invitan a sumergirte en sabor tropical.",
                 profile: "Amargo, Cítrico"
             },
             {
@@ -1069,7 +816,7 @@
                 price: "$8.500",
                 image: "./assets/img/kikuyaa.jpg",
                 ingredients: "Ron, Syrup Maracuyá, Limón, Naranja, Ananá, Pomelo, Arándanos",
-                description: "Un coctel con perfil dulce, tropical y un toque cítrico. Ideal para quienes buscan equilibrio entre dulzura y acidez, llevándote al Pacífico.",
+                description: "Perfil dulce, tropical y cítrico. Ideal para quienes buscan equilibrio, llevándote al Pacífico.",
                 profile: "Agridulce"
             },
             {
@@ -1077,7 +824,7 @@
                 price: "$14.000",
                 image: "./assets/img/trago3.jpeg",
                 ingredients: "Ron de Jamaica, Orgeat, Lima, Orange Curaçao",
-                description: "Un clásico equilibrado con matices tropicales, cítrico y almendras. Creado por Trader Vic's en 1944. Los expertos dicen que debe probarse al menos una vez.",
+                description: "Clásico equilibrado con matices tropicales, cítrico y almendras. Creado por Trader Vic's en 1944.",
                 profile: "Cítrico"
             },
             {
@@ -1085,7 +832,7 @@
                 price: "$8.500",
                 image: "./assets/img/oceanblue.jpg",
                 ingredients: "Vodka de Ananá, Ron Blanco, Blue Curaçao, Coco, Ananá, Syrup de Vainilla",
-                description: "Un chapuzón tropical directo al paraíso: fresco, vibrante y con el color del mar que invita a brindar como si estuvieras de vacaciones eternas.",
+                description: "Un chapuzón tropical directo al paraíso: fresco, vibrante y con el color del mar.",
                 profile: "Agridulce, Tropical"
             },
             {
@@ -1093,7 +840,7 @@
                 price: "$7.900",
                 image: "./assets/img/tropicalpunch.jpg",
                 ingredients: "Ron, Aperol, Naranja Mango, Lima, Syrup de Jengibre",
-                description: "El golpe alegre del verano eterno: frutal, chispeante y con ese toque atrevido que enciende cualquier aventura.",
+                description: "El golpe alegre del verano eterno: frutal, chispeante y con toque atrevido.",
                 profile: "Cítrico, Tropical"
             },
             {
@@ -1101,7 +848,7 @@
                 price: "$8.500",
                 image: "./assets/img/esqueleto.jpg",
                 ingredients: "Gin, Falernum, Lima, Frutos del bosque, Jengibre Syrup, Ananá",
-                description: "Un cóctel vibrante inspirado en la celebración y el misterio. Dulce, suave e irresistiblemente tropical — un sorbo que te invita a disfrutar el momento.",
+                description: "Cóctel vibrante inspirado en celebración y misterio. Dulce, suave e irresistiblemente tropical.",
                 profile: "Dulce Tropical"
             },
             {
@@ -1109,7 +856,7 @@
                 price: "$7.000",
                 image: "./assets/img/sweet.jpg",
                 ingredients: "Ron, Chocolate Blanco, Ananá, Banana y Crema",
-                description: "Un coctel dulce, con una explosión de sabores en tu paladar para que luego tengas Dulces Sueños.",
+                description: "Dulce, con explosión de sabores para que luego tengas Dulces Sueños.",
                 profile: "Dulce"
             },
             {
@@ -1117,7 +864,7 @@
                 price: "$8.500",
                 image: "./assets/img/trago4.jpeg",
                 ingredients: "Ron, Falernum, Lima, Ananá, Pomelo, Syrup de Kiwi, Infusión de frutas patagónicas",
-                description: "Este coctel creado por nuestra bartender Camila fue seleccionado como finalista en el torneo Tiki League Argentina 2024.",
+                description: "Creado por nuestra bartender Camila. Finalista en Tiki League Argentina 2024.",
                 profile: "Tropical, Especiado"
             },
             {
@@ -1125,7 +872,7 @@
                 price: "$8.500",
                 image: "./assets/img/tikibang.jpg",
                 ingredients: "Ron, Syrup de canela, Naranja Mango, Kiwi, Lima, Ananá",
-                description: "Una explosión tropical que combina el carácter del ron con la dulzura del mango y el ananá, equilibrado con la frescura del kiwi y los cítricos.",
+                description: "Explosión tropical que combina ron con dulzura del mango y ananá, equilibrado con kiwi y cítricos.",
                 profile: "Tropical, Especiado"
             },
             {
@@ -1133,19 +880,118 @@
                 price: "$17.000",
                 image: "./assets/img/blood.jpeg",
                 ingredients: "Ron, Lima, Pomelo, Naranja, Granadina, Absenta",
-                description: "Un cóctel para compartir que mezcla el carácter del ron con la frescura cítrica, endulzado con granadina y coronado con absenta. Para 2 personas.",
+                description: "Para compartir. Mezcla ron con frescura cítrica, endulzado con granadina y absenta. Para 2 personas.",
                 profile: "Compartir (2 personas)"
             }
         ];
 
         const wednesdayCocktails = [
             {
+                name: "Dry Martini",
+                price: "$10.000",
+                image: "./assets/img/trago3.jpeg",
+                ingredients: "Gin, Vermut Seco, Aceituna o twist de limón",
+                description: "El clásico por excelencia. Elegante, sofisticado y atemporal. Medida perfecta entre gin y vermut seco.",
+                profile: "Seco, Herbal"
+            },
+            {
+                name: "Gibson",
+                price: "$10.000",
+                image: "./assets/img/trago3.jpeg",
+                ingredients: "Gin, Vermut Seco, Cebollita en vinagre",
+                description: "Variación más elegante del Martini. Se distingue por llevar cebollita en vinagre.",
+                profile: "Seco, Herbal"
+            },
+            {
+                name: "Negroni",
+                price: "$8.000",
+                image: "./assets/img/esqueleto.jpg",
+                ingredients: "Gin, Campari, Vermut Rosso",
+                description: "Amargor perfecto. Clásico italiano que equilibra gin con Campari y vermut rojo. Intenso y sofisticado.",
+                profile: "Amargo, Equilibrado"
+            },
+            {
+                name: "Manhattan",
+                price: "$12.000",
+                image: "./assets/img/sweet.jpg",
+                ingredients: "Whisky, Vermut Rosso, Angostura, Cereza",
+                description: "El rey de los clásicos americanos. Whisky y vermut rojo en perfecta armonía con amargos aromáticos.",
+                profile: "Dulce, Especiado"
+            },
+            {
+                name: "Old Fashioned",
+                price: "$12.000",
+                image: "./assets/img/tikibang.jpg",
+                ingredients: "Whisky, Azúcar, Angostura, Naranja",
+                description: "El abuelo de todos los cocteles. Simple, elegante y poderoso. Whisky con azúcar, amargos y twist de naranja.",
+                profile: "Fuerte, Aromático"
+            },
+            {
+                name: "Whisky Sour",
+                price: "$15.000",
+                image: "./assets/img/tropicalpunch.jpg",
+                ingredients: "Whisky, Limón, Azúcar, Clara de huevo, Angostura",
+                description: "Equilibrio perfecto entre dulce y ácido. Con espuma sedosa de clara que lo hace irresistible.",
+                profile: "Agridulce, Sedoso"
+            },
+            {
+                name: "Pisco Sour",
+                price: "$15.000",
+                image: "./assets/img/oceanblue.jpg",
+                ingredients: "Pisco, Limón, Jarabe, Clara de huevo, Angostura",
+                description: "El orgullo sudamericano. Refrescante, espumoso y con el carácter único del pisco.",
+                profile: "Cítrico, Espumoso"
+            },
+            {
+                name: "Mojito",
+                price: "$9.000",
+                image: "./assets/img/kikuyaa.jpg",
+                ingredients: "Ron Blanco, Menta, Lima, Azúcar, Soda",
+                description: "Cuba en un vaso. Refrescante, herbáceo y perfecto para cualquier ocasión.",
+                profile: "Refrescante, Herbáceo"
+            },
+            {
+                name: "Caipirinha",
+                price: "$9.000",
+                image: "./assets/img/sharknuevo.jpg",
+                ingredients: "Cachaça, Lima, Azúcar",
+                description: "El trago nacional de Brasil. Simple, potente y delicioso. Lima machacada con cachaça y azúcar.",
+                profile: "Cítrico, Fuerte"
+            },
+            {
+                name: "Espresso Martini",
+                price: "$8.500",
+                image: "./assets/img/sweet.jpg",
+                ingredients: "Vodka, Licor de Café, Espresso, Azúcar",
+                description: "Energía y sofisticación en cada sorbo. El café perfecto se encuentra con el vodka.",
+                profile: "Dulce, Energético"
+            },
+            {
+                name: "Margarita",
+                price: "$9.000",
+                image: "./assets/img/oceanblue.jpg",
+                ingredients: "Tequila, Triple Sec, Lima, Sal",
+                description: "El clásico mexicano que nunca falla. Perfecto equilibrio entre tequila, cítrico y dulzor, con borde salado.",
+                profile: "Cítrico, Salado"
+            },
+            {
+                name: "Cosmopolitan",
+                price: "$9.000",
+                image: "./assets/img/zombieee.jpg",
+                ingredients: "Vodka, Triple Sec, Arándano, Lima",
+                description: "Sofisticación en rosa. El coctel que conquistó Nueva York y el mundo. Elegante y delicioso.",
+                profile: "Frutal, Elegante"
+            }
+        ];
+
+        const promoCocktails = [
+            {
                 name: "Daiquiri Frozen Frutilla",
                 price: "$4.750",
                 originalPrice: "$9.500",
                 image: "./assets/img/oceanblue.jpg",
                 ingredients: "Ron, Frutilla, Lima, Azúcar",
-                description: "¡PROMO MIÉRCOLES 2x1! Clásico daiquiri frozen con frutillas frescas, perfecto para compartir.",
+                description: "¡PROMO 2x1! Clásico daiquiri frozen con frutillas frescas, perfecto para compartir.",
                 profile: "Dulce, Refrescante"
             },
             {
@@ -1154,7 +1000,7 @@
                 originalPrice: "$9.500",
                 image: "./assets/img/oceanblue.jpg",
                 ingredients: "Ron, Durazno, Lima, Azúcar",
-                description: "¡PROMO MIÉRCOLES 2x1! Suave y frutal, con el dulzor natural del durazno.",
+                description: "¡PROMO 2x1! Suave y frutal, con el dulzor natural del durazno.",
                 profile: "Dulce, Frutal"
             },
             {
@@ -1163,7 +1009,7 @@
                 originalPrice: "$9.500",
                 image: "./assets/img/oceanblue.jpg",
                 ingredients: "Ron, Ananá, Lima, Azúcar",
-                description: "¡PROMO MIÉRCOLES 2x1! Tropical y refrescante, con el sabor vibrante del ananá.",
+                description: "¡PROMO 2x1! Tropical y refrescante, con el sabor vibrante del ananá.",
                 profile: "Tropical, Refrescante"
             },
             {
@@ -1172,7 +1018,7 @@
                 originalPrice: "$8.500",
                 image: "./assets/img/sweet.jpg",
                 ingredients: "Vodka, Licor de Café, Espresso, Azúcar",
-                description: "¡PROMO MIÉRCOLES 2x1! El clásico que combina energía y sofisticación en cada sorbo.",
+                description: "¡PROMO 2x1! El clásico que combina energía y sofisticación en cada sorbo.",
                 profile: "Dulce, Energético"
             }
         ];
@@ -1197,48 +1043,129 @@
             { name: "Mojito", price: "$9.000" }
         ];
 
-        // Check if today is Wednesday
-        function isWednesday() {
-            // Si el modo de prueba está activado, siempre retorna true
-            if (TEST_WEDNESDAY_MODE) {
-                console.log('🧪 MODO DE PRUEBA ACTIVADO - Mostrando como miércoles');
-                return true;
+        const regularFood = {
+            pizzas: [
+                { name: "Mozzarella", price: "$16.000" },
+                { name: "Especial", price: "$18.000" },
+                { name: "Roquefort", price: "$22.000" }
+            ],
+            burgers: [
+                { name: "Clásica (Medallón 120gr, Queso Cheddar)", price: "$16.000" },
+                { name: "Completa (Medallón 120gr, Jamón, Queso, Huevo, Lechuga, Tomate)", price: "$20.000" },
+                { name: "Big Tiki (Doble Medallón, Cheddar, Cebolla, Lechuga)", price: "$25.000" }
+            ],
+            fries: [
+                { name: "Papas Tiki (Cheddar, Bacon, Verdeo)", price: "$15.000" },
+                { name: "Cheddar", price: "$13.000" },
+                { name: "Spicy", price: "$10.000" },
+                { name: "Clásicas (Salsa a elección)", price: "$10.000" }
+            ],
+            appetizers: [
+                { name: "Tequeños x6", price: "$10.000" },
+                { name: "Tequeños x12", price: "$18.000" }
+            ]
+        };
+
+        const wednesdayFood = {
+            pizzas: [
+                { name: "Margherita Clásica", price: "$16.000" },
+                { name: "Cuatro Quesos", price: "$20.000" },
+                { name: "Napolitana", price: "$18.000" }
+            ],
+            burgers: [
+                { name: "Clásica (Medallón 120gr, Queso)", price: "$16.000" },
+                { name: "Completa (Jamón, Queso, Huevo, Lechuga, Tomate)", price: "$20.000" },
+                { name: "Bacon Deluxe (Doble Medallón, Bacon, Cheddar)", price: "$25.000" }
+            ],
+            fries: [
+                { name: "Papas Clásicas", price: "$10.000" },
+                { name: "Con Cheddar", price: "$13.000" },
+                { name: "Con Bacon y Verdeo", price: "$15.000" }
+            ],
+            appetizers: [
+                { name: "Tequeños x6", price: "$10.000" },
+                { name: "Tequeños x12", price: "$18.000" }
+            ]
+        };
+
+        function getDayType() {
+            if (TEST_MODE) {
+                console.log('🧪 MODO DE PRUEBA:', TEST_DAY);
+                return TEST_DAY;
             }
             
-            const today = new Date();
-            const day = today.getDay();
-            console.log('📅 Hoy es:', ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'][day]);
-            console.log('🎯 ¿Es miércoles?', day === 3);
-            return day === 3;
+            const day = new Date().getDay();
+            const dayNames = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+            console.log('📅 Hoy es:', dayNames[day]);
+            
+            if (day === 3) {
+                console.log('🎩 Día de Clásicos');
+                return 'wednesday';
+            }
+            
+            if (day === 4 || day === 0) {
+                console.log('🎉 Día de Promo 2x1');
+                return 'promo';
+            }
+            
+            console.log('🗿 Carta Tiki Regular');
+            return 'regular';
         }
 
-        // Initialize menu
         function initMenu() {
-            const isWed = isWednesday();
-            const cocktailsToShow = isWed ? wednesdayCocktails : regularCocktails;
+            const dayType = getDayType();
             const cocktailsGrid = document.getElementById('cocktailsGrid');
-            const wednesdayBanner = document.getElementById('wednesdayBanner');
-
-            // Show Wednesday banner if it's Wednesday
-            if (isWed) {
-                console.log('¡Mostrando contenido de miércoles!');
-                wednesdayBanner.style.display = 'block';
-                wednesdayBanner.innerHTML = `
-                    <div class="wednesday-banner">
-                        <h2>🎉 ¡ESPECIAL MIÉRCOLES! 🎉</h2>
-                        <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem;">2x1 en Daiquiris Frozen y Espresso Martini</p>
-                        <p style="font-size: 1.1rem;">De 19:00 a 21:30hs</p>
+            const banner = document.getElementById('specialBanner');
+            const cocktailsTitle = document.getElementById('cocktailsTitle');
+            const classicSection = document.getElementById('clasicos');
+            
+            let cocktailsToShow = regularCocktails;
+            let foodToShow = regularFood;
+            
+            banner.style.display = 'none';
+            banner.innerHTML = '';
+            
+            if (dayType === 'wednesday') {
+                cocktailsToShow = wednesdayCocktails;
+                foodToShow = wednesdayFood;
+                cocktailsTitle.textContent = 'Cocteles Clásicos de Siempre';
+                classicSection.style.display = 'none';
+                
+                banner.style.display = 'block';
+                banner.innerHTML = `
+                    <div class="banner-content classic">
+                        <h2 style="color: #ECF0F1;">🎩 Miércoles de Clásicos 🎩</h2>
+                        <p style="font-weight: 600; color: #ECF0F1;">Hoy disfrutá de nuestra selección de coctelería clásica</p>
+                        <p style="color: #BDC3C7;">Los mejores clásicos de la coctelería mundial</p>
                     </div>
                 `;
-
-                // Update modal for Wednesday
-                document.getElementById('modalTitle').innerHTML = '🎉 ¡Es Miércoles de Promos! 🎉';
-                document.getElementById('modalText').innerHTML = '<strong>Hoy de 19:00 a 21:30hs tenemos 2x1</strong> en Daiquiris Frozen Saborizados y Espresso Martini. ¡Acércate a la barra para ordenar!';
-            } else {
-                console.log('Mostrando carta regular');
+                
+                document.getElementById('modalTitle').innerHTML = '🎩 ¡Miércoles de Clásicos! 🎩';
+                document.getElementById('modalText').innerHTML = 'Hoy disfrutá de nuestra carta especial con los mejores cocteles clásicos de la coctelería mundial. ¡Acércate a la barra para ordenar!';
+            }
+            else if (dayType === 'promo') {
+                cocktailsToShow = promoCocktails;
+                foodToShow = regularFood;
+                cocktailsTitle.textContent = 'Promo 2x1 - Hoy';
+                classicSection.style.display = 'none';
+                
+                banner.style.display = 'block';
+                banner.innerHTML = `
+                    <div class="banner-content">
+                        <h2 style="color: var(--dark);">🎉 ¡PROMO 2x1! 🎉</h2>
+                        <p style="font-weight: 600; font-size: 1.15rem; color: var(--darker);">2x1 en Daiquiris Frozen y Espresso Martini</p>
+                        <p style="color: var(--darker);">De 19:00 a 21:30hs</p>
+                    </div>
+                `;
+                
+                document.getElementById('modalTitle').innerHTML = '🎉 ¡Promo 2x1! 🎉';
+                document.getElementById('modalText').innerHTML = '<strong>Hoy de 19:00 a 21:30hs tenemos 2x1</strong> en Daiquiris Frozen Saborizados y Espresso Martini. ¡Acércate a la barra!';
+            }
+            else {
+                cocktailsTitle.textContent = 'Nuestros Cocteles Tiki';
+                classicSection.style.display = 'block';
             }
 
-            // Render cocktails
             cocktailsGrid.innerHTML = cocktailsToShow.map((cocktail, index) => `
                 <div class="cocktail-card fade-in" style="animation-delay: ${index * 0.1}s">
                     <img src="${cocktail.image}" alt="${cocktail.name}" class="cocktail-image" onerror="this.src='./assets/img/trago4.jpeg'">
@@ -1256,30 +1183,58 @@
                 </div>
             `).join('');
 
-            // Render classic cocktails
-            const classicCocktailsTable = document.getElementById('classicCocktails');
-            classicCocktailsTable.innerHTML = classicCocktails.map(cocktail => `
-                <tr>
-                    <td>${cocktail.name}</td>
-                    <td class="price">${cocktail.price}</td>
-                </tr>
-            `).join('');
+            if (classicSection.style.display !== 'none') {
+                document.getElementById('classicCocktails').innerHTML = classicCocktails.map(c => `
+                    <tr><td>${c.name}</td><td class="price">${c.price}</td></tr>
+                `).join('');
+            }
+            
+            renderFoodMenu(foodToShow);
+        }
+        
+        function renderFoodMenu(foodMenu) {
+            document.getElementById('foodMenu').innerHTML = `
+                <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🍕 Pizzas</h3>
+                <table class="menu-table fade-in">
+                    <tbody>
+                        ${foodMenu.pizzas.map(item => `<tr><td>${item.name}</td><td class="price">${item.price}</td></tr>`).join('')}
+                    </tbody>
+                </table>
+
+                <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🍔 Hamburguesas</h3>
+                <p style="text-align: center; color: var(--secondary); margin-bottom: 1rem;">Todas vienen con papas</p>
+                <table class="menu-table fade-in">
+                    <tbody>
+                        ${foodMenu.burgers.map(item => `<tr><td>${item.name}</td><td class="price">${item.price}</td></tr>`).join('')}
+                    </tbody>
+                </table>
+
+                <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🍟 Papas</h3>
+                <table class="menu-table fade-in">
+                    <tbody>
+                        ${foodMenu.fries.map(item => `<tr><td>${item.name}</td><td class="price">${item.price}</td></tr>`).join('')}
+                    </tbody>
+                </table>
+
+                <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🇻🇪 Tequeños Venezolanos</h3>
+                <table class="menu-table fade-in">
+                    <tbody>
+                        ${foodMenu.appetizers.map(item => `<tr><td>${item.name}</td><td class="price">${item.price}</td></tr>`).join('')}
+                    </tbody>
+                </table>
+            `;
         }
 
-        // Close welcome modal
         function closeModal() {
             document.getElementById('welcomeModal').style.display = 'none';
         }
 
-        // Toggle mobile menu
         function toggleMenu() {
             document.getElementById('navMenu').classList.toggle('active');
         }
 
-        // Scroll animations
         function handleScrollAnimations() {
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach(el => {
+            document.querySelectorAll('.fade-in').forEach(el => {
                 const rect = el.getBoundingClientRect();
                 if (rect.top < window.innerHeight - 100) {
                     el.classList.add('visible');
@@ -1287,20 +1242,17 @@
             });
         }
 
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    // Close mobile menu if open
                     document.getElementById('navMenu').classList.remove('active');
                 }
             });
         });
 
-        // Initialize
         window.addEventListener('load', () => {
             initMenu();
             handleScrollAnimations();
@@ -1308,7 +1260,6 @@
 
         window.addEventListener('scroll', handleScrollAnimations);
 
-        // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
             const nav = document.getElementById('navMenu');
             const toggle = document.querySelector('.mobile-toggle');
@@ -1319,5 +1270,3 @@
     </script>
 </body>
 </html>
-
-
