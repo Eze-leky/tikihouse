@@ -1,741 +1,1116 @@
 <!doctype html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <title>Tiki House Bar</title>
+    <meta name="description" content="Tiki House Bar - Coctelería Tropical Exótica en Buenos Aires">
+    <title>Tiki House Bar - Paraíso Tropical</title>
     <link rel="icon" href="./assets/img/cocktail.png" type="image/png" sizes="96x96">
-     <!-- Bootstrap core CSS -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="./css/estilos.css" rel="stylesheet">
-  </head>
-  <body>
-
-
-
-  
-  <div id="message1" class="message">
-    Bienvenidos a nuestra Casa Tiki, cuando estes list@ para ordenar, acércate a la barra para pedir!
-    <button onclick="closeMessage('message1')">Aceptar</button>
-</div>
-<div id="message2" class="message message2">
-    Hoy de 19:00hs a 21:30hs tenemos promo 2x1 en daiquiri Frozzen Saborizados, Expresso Martini
-    <button onclick="closeMessage('message2')">Aceptar</button>
-</div>
-
     
-<header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
-        <div class="d-flex justify-content-center align-items-center">
-          <div class="d-flex flex-column m-0 justify-content-center align-items-center">
-            <p class="m-0 fuenteLogo">Tiki House Bar</p>
-         
-          </div>
-          
-        </div>
-        
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <a class="nav-link active colorRosaPastel" aria-current="page" href="#blue-hawai">Cocteles</a>
-          </li>
-          <li class="nav-item"></li>
-            <a class="nav-link colorRosaPastel" href="#clasic">Clasicos</a>
-          </li>
-          <li class="nav-item"></li>
-            <a class="nav-link colorRosaPastel" href="#beer">Cerveza</a>
-          </li>
-          <li class="nav-item"></li>
-            <a class="nav-link colorRosaPastel" href="#sin_alcohol">Sin Alcohol</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link colorRosaPastel" href="#comida">Comidas</a>
-          </li>         
-        </ul>
-      
-      </div>
-    </div>
-  </nav>
-</header>
-
-<main class="container-fluid bg-dark ">
-  <!--<div class="divVideo">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&family=Fredoka:wght@700&display=swap" rel="stylesheet">
     
-  </div>-->
-
-
-  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active"> 
-        <img src="./assets/img/fondo1.JPG" class="d-block w-100 cover filtro" alt="">
-
-        <div class="container">
-          <div class="carousel-caption text-start">
-            <h2 class="fuenteCarrusel">Bar exclusivo de cocteleria Exotica Tropical</h2>
-            <p >Viví el paraiso tropical, con cada coctel!</p>
+    <style>
+        :root {
+            /* Color Palette - Tropical Vibes */
+            --primary: #FF6B9D;
+            --secondary: #00D4AA;
+            --accent: #FFC107;
+            --dark: #1a1a2e;
+            --darker: #0f0f1e;
+            --light: #f8f9fa;
+            --ocean: #00B4D8;
+            --sunset: #FF4E50;
+            --lime: #98FB98;
             
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-      
-        <img src="./assets/img/fondo22.jpg" class="d-block w-100 cover filtro" alt="">
+            /* Typography */
+            --font-display: 'Playfair Display', serif;
+            --font-fun: 'Fredoka', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+        }
 
-        <div class="container">
-          <div class="carousel-caption">
-            <h2 class="fuenteCarrusel">Cocteles Unicos!</h2>
-            <p >Encontraras sabores unicos y sorprendentes</p>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            background: 
+                radial-gradient(circle at 20% 50%, var(--primary) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--secondary) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, var(--accent) 0%, transparent 50%);
+            animation: morphBackground 15s ease-in-out infinite;
+        }
+
+        @keyframes morphBackground {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, 30px) scale(1.1); }
+            66% { transform: translate(-30px, 50px) scale(0.9); }
+        }
+
+        /* Welcome Messages */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--primary), var(--sunset));
+            padding: 3rem;
+            border-radius: 30px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(255, 107, 157, 0.5);
+            animation: slideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-content h2 {
+            font-family: var(--font-fun);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .modal-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .modal-btn {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-fun);
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--sunset));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.5);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        /* Cocktail Cards */
+        .cocktails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .cocktail-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid rgba(255, 107, 157, 0.2);
+            cursor: pointer;
+        }
+
+        .cocktail-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(255, 107, 157, 0.3);
+        }
+
+        .cocktail-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .cocktail-card:hover .cocktail-image {
+            transform: scale(1.1);
+        }
+
+        .cocktail-info {
+            padding: 2rem;
+        }
+
+        .cocktail-name {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .cocktail-price {
+            font-family: var(--font-fun);
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cocktail-ingredients {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .cocktail-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .cocktail-profile {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), var(--ocean));
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        /* Tables */
+        .menu-table {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+
+        .menu-table thead {
+            background: linear-gradient(135deg, var(--primary), var(--sunset));
+        }
+
+        .menu-table th {
+            padding: 1.5rem;
+            text-align: left;
+            font-family: var(--font-fun);
+            font-size: 1.2rem;
+        }
+
+        .menu-table td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-table tr:hover {
+            background: rgba(255, 107, 157, 0.1);
+        }
+
+        .price {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 2px solid var(--primary);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-link {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--secondary);
+        }
+
+        /* Wednesday Special Styles */
+        .wednesday-banner {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .wednesday-banner h2 {
+            font-family: var(--font-fun);
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .wednesday-banner p {
+            font-size: 1.2rem;
+            color: var(--darker);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Featured Cards */
+        .featured-cards {
+            margin-top: 4rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(0, 212, 170, 0.1));
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 2px solid rgba(255, 107, 157, 0.3);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(255, 107, 157, 0.4);
+        }
+
+        .feature-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 5px 15px rgba(255, 107, 157, 0.3));
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .feature-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--sunset));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .feature-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 107, 157, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(26, 26, 46, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s ease;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .cocktails-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 1rem;
+                padding: 2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Welcome Modal -->
+    <div id="welcomeModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 id="modalTitle">🌴 ¡Bienvenidos a Tiki House! 🌴</h2>
+            <p id="modalText">Cuando estés list@ para ordenar, acércate a la barra. ¡Prepárate para vivir el paraíso tropical!</p>
+            <button class="modal-btn" onclick="closeModal()">¡Vamos! 🍹</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">🗿 Tiki House Bar</a>
+            <button class="mobile-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#cocktails" class="nav-link">Cocteles</a></li>
+                <li><a href="#clasicos" class="nav-link">Clásicos</a></li>
+                <li><a href="#cervezas" class="nav-link">Cervezas</a></li>
+                <li><a href="#comida" class="nav-link">Comida</a></li>
+                <li><a href="#sin-alcohol" class="nav-link">Sin Alcohol</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Paraíso Tropical</h1>
+            <p class="hero-subtitle">Cocteles exóticos únicos en Buenos Aires</p>
+            <a href="#cocktails" class="hero-cta">Explorar Carta 🌺</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Wednesday Banner (shown only on Wednesdays) -->
+        <div id="wednesdayBanner" style="display: none;"></div>
+
+        <!-- Featured Cards Section -->
+        <section class="featured-cards" style="margin-bottom: 6rem;">
+            <div class="cards-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🗿</div>
+                    <h3>Tiki Mugs</h3>
+                    <p>¡Llevate un recuerdo único! Elegí el Tiki Mug que más te guste y hacelo tuyo.</p>
+                    <a href="./mugs/index.html" class="feature-btn">Elegir Mug</a>
+                </div>
+                <div class="feature-card fade-in" style="animation-delay: 0.1s">
+                    <div class="feature-icon">🍹</div>
+                    <h3>Curso de Bartender</h3>
+                    <p>Aprendé con nosotros sobre el mundo de la coctelería. ¡Convertite en un experto!</p>
+                    <a href="https://eze-leky.github.io/ibizadrinks/" target="_blank" class="feature-btn">Saber Más</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cocktails Section -->
+        <section id="cocktails">
+            <h2 class="section-title">Nuestros Cocteles Tiki</h2>
             
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="./assets/img/fondo3.jpg" class="d-block w-100 cover filtro" alt="">
+            <div class="cocktails-grid" id="cocktailsGrid">
+                <!-- Cocktails will be dynamically inserted here -->
+            </div>
+        </section>
 
-        <div class="container">
-          <div class="carousel-caption text-end">
-            <h2 class="fuenteCarrusel">Unico en La ciudad</h2>
-            <p >Somos el primer bar exlcusivo de cocteles tropicales</p>
-           
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-  <!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
-
-  <div class="container marketing">
-
-    <!-- Three columns of text below the carousel -->
-    <div class="row">
-      <div class="col-lg-4">
-        <!--https://img.icons8.com/officel/80/000000/wedding-dress.png"-->
-        <img class="bd-placeholder-img rounded-circle cover" width="140" height="140" src="./assets/img/trago4.jpeg" >
-        <div class="borroso">
-          <h2 class="fuenteLogo">Cocteles</h2>
-          <p>Navega y disfruta de nuestra carta de cocteles TIKI o como nos gusta llamarlo a nosotros "exoticos tropicales"</p>
-          <p><a class="btn bgBotonRosa text-white" href="#blue-hawai">Ir &raquo;</a></p>
-        </div>
-        
-      </div>
-       
-       <!-- Comida -->
-      <div class="col-lg-4">
-        <img class="bd-placeholder-img rounded-circle cover" width="140" height="140" src="./assets/img/pizza.JPG" >
-        <h2 class="fuenteLogo">Comida</h2>
-        <p>Aquí encontraras nuestra carta de comidas</p>
-        <p><a class="btn bgBotonRosa text-white" href="#comida">Ir &raquo;</a></p>
-      </div>
-<!-- Mugs -->
-      <div class="col-lg-4">
-        <img class="bd-placeholder-img rounded-circle cover" width="140" height="140" src="./assets/img/one.jpg" >
-        <h2 class="fuenteLogo">Tiki Mugs</h2>
-        <p>Llevate un recuerdo! Elegí el tiki Mug que mas te guste y llevatelo!</p>
-        <p><a class="btn bgBotonRosa text-white" href="./mugs/index.html">Elegir &raquo;</a></p>
-      </div>
-        <!-- cursos -->
-      <div class="col-lg-4">
-        <img class="bd-placeholder-img rounded-circle cover" width="140" height="140" src="./assets/img/tiki2.jpg" >
-        <h2 class="fuenteLogo">Nuestro Curso!</h2>
-        <p>Aprende con nosotros sobre el mundo de la cocteleria en nuestro curso de bartenders!</p>
-        <p><a class="btn bgBotonRosa text-white" href="https://eze-leky.github.io/ibizadrinks/">Saber Más &raquo;</a></p>
-    </div>
-
-    <!-- Coctel gratis
-    <div class="col-lg-4">
-      <img class="bd-placeholder-img rounded-circle cover" width="140" height="140" src="./assets/img/trago1.jpeg" >
-      <h2 class="fuenteLogo">Ganá un coctel</h2>
-      <p>¿Queres ganar un coctel GRATIS?? Fijate como hacerlo.</p>
-      <p><a class="btn bgBotonRosa text-white" href="#free">Ir &raquo;</a></p>
-    </div>-->
-      
-<!-- TRAGO 3--> 
-    <hr class="featurette-divider">
-    <div class="row featurette">
-      <div class="col-md-6 order-md-2">
-        <h2 class="featurette-heading text-danger">Zombie <span class="text-muted fuenteCursiva"><p>$8.500</span></p></h2>
-        <p class="lead" ><p>Ron Blanco, Ron Dorado, Falernum, Lima, Pomelo, Canela y mucho FUEGO!</p><p>El Zombie es un cóctel tiki legendario, 
-        creado en 1934 por Donn Beach (Don the Beachcomber), pionero de la cultura tiki en EE. UU. Este coctel es famoso por "revivir a los muertos". Tradicionalmente, se limita a uno o dos por persona debido a su alto contenido alcohólico, pero aquí podemos dejarte llegar al 3ero.</p>
-         <p><u>Falernum:</u> Ron especiado con perfil cítrico</p>
-        <p><u>Perfil</u> Agridulce, Especiado</p>
-        </div>
-      <div class="col-md-6">
-        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto cover" src="./assets/img/zombieee.jpg" alt="">   
-      </div>
-    </div>
-
-      
-<!-- TRAGO 4 -->
-    <hr class="featurette-divider">
-    <div class="row featurette mb-0">
-      <div class="col-md-6 order-md-2">
-        <h2 class="featurette-heading text-info">Tiki Barrel <span class="text-muted fuenteCursiva"><p>$8.500</span></p></h2>
-        <p class="lead" ><p>Ron Blanco, Ron Dorado, Maracuya,Lima, Naranja, Ananá, Banana y Vainilla</p> Una de las estrellas de la casa. Una combinacion perfecta entre el dulce y un toque citrico. La cura perfecta para un corazon roto.</p>
-     <p><u>Perfil</u> Dulce</p>
-      </div>
-      <div class="col-md-6 order-md-1" height="500">
-        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto cover" src="./assets/img/tikibarrel.jpg" alt="">
-       </div>
-      </div>    
-    <hr class="featurette-divider">
-<!-- TRAGO 5-->
-
-    
-    <div class="row featurette mb-0">
-      <div class="col-md-6 order-md-2">
-        <h2 class="featurette-heading text-success">Shark <span class="text-muted fuenteCursiva"><p>$8.500</span></p></h2>
-        <p class="lead" ><p>Ron Blanco, Ron Dorado, Syrup de Frambuesas, Cynar, Vermuth Rosso, Ananá y Lima</p>Una version de Ludovico De Biaggi del coctel Shark Tooth. Un Coctel con Notas amargas que te invita a dejarte atrapar por los dientes de nuestro Shark, y sumergirte en un mar de sabor tropical.</p>
-      <p><u>Perfil</u> Amargo, notas citricas</p>
-      </div>
-      <div class="col-md-6 order-md-1" height="500">
-        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto cover" src="./assets/img/sharknuevo.jpg" alt=""></div>
-    </div>    
-   
-
-      <!-- TRAGO 10 -->
-<hr class="featurette-divider"> 
-<div class="row featurette mb-0">
-  <div class="col-md-6 order-md-2">
-    <h2 class="featurette-heading text-primary">Kikuya Lapu <span class="text-muted fuenteCursiva"><p>$8.500</span></p></h2>
-    <p class="lead" ><p>Ron, Syrup Maracuya, Limon, Naranja,Anana, Pomelo, Arandanos</p>Un coctel con un Perfil Dulce, tropical y un toque citrico, Con jugos frescos y el infaltable ron, es ideal para aquellos que buscan un equilibrio entre dulzura y acidez, llevándote a un rincón exótico del Pacífico.</p>
-  <p><u>Perfil</u> AgriDulce</p>
-  </div>
-  <div class="col-md-6 order-md-1" height="500">
-    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto cover" src="./assets/img/kikuyaa.jpg" alt="">
-   </div>
-</div> 
-      <!-- TRAGO 2-->
-    <hr class="featurette-divider">
-    <div class="row featurette mb-0">
-      <div class="col-md-6 order-md-2">
-        <h2 class="featurette-heading text-warning">Mai Tai <span class="text-muted fuenteCursiva"><p>$14.000</span></p></h2>
-        <p class="lead" ><p>Ron de Jamaica, Orgeat, Lima, Orange Curaçao</p>Un coctel equilibrado, sabroso con matices de frutas tropicales, citrico y un toque de almendras.
-      Un Coctel clasico del Tiki que no puede faltar. Los expertos dicen que debe ser probado aunque sea solo una vez. Creado por uno de los padres de la cocteleria Tiki conocido como Trader Vic´s en 1944.
-      Según la historia, Trader Vic inventó el Mai Tai para unos amigos tahitianos que lo visitaban. Después de probar el cóctel, exclamaron emocionados: "Maita'i roa ae!", lo que en tahitiano significa "¡Muy bueno!" o "¡Fuera de este mundo!" </p>
-      <p><u>Orgeat:</u> Cocción de Almendras, azucar y especias</p>
-        <p><u>Perfil</u> Citrico</p>
-      </div>
-      <div class="col-md-6 order-md-1" height="500">
-        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto cover imgVelo"  src="./assets/img/trago3.jpeg" alt="">
-      </div>
-    </div> 
-
-
-<!-- TRAGO Paraiso Tropical -->
-
-    <hr class="featurette-divider">
-
-      
-     <!-- TRAGO Ocean Blue -->
-
-    
-<<div id="blue-hawai" class="row featurette mb-0">
-  <div class="col-md-6 order-md-2">
-    <h2 class="featurette-heading text-primary">Ocean Blue <p><span class="text-muted fuenteCursiva">$8.500</span></p></h2>
-    <p class="lead">Vodka de Anana, Ron Blanco, Blue Curaçao, Coco, Ananá, Syrup de Vainilla</p>
-    <p>Un chapuzón tropical directo al paraíso: fresco, vibrante y con el color del mar que invita a brindar como si estuvieras de vacaciones eternas</p>
-    <p><u>Perfil</u> Agridulce, Tropical</p>
-  </div>
-  <div class="col-md-6 order-md-1" height="500">
-    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto cover" src="./assets/img/oceanblue.jpg" alt="">
-  </div>
-</div>       
-
-
-<!-- TRAGO 13 -->
-<hr class="featurette-divider"> 
-<div class="row featurette mb-0">
-  <div class="col-md-6 order-md-2">
-    <h2 class="featurette-heading text-warning">Tropical Punch <span class="text-muted fuenteCursiva"><p>$7.900</span></p></h2>
-    <p class="lead" ><p>Ron, Aperol, Naranja Mango, Lima, Syrup de Jengibre.</p>El golpe alegre del verano eterno: frutal, chispeante y con ese toque atrevido que enciende cualquier aventura.</p>
-  <p><u>Perfil</u> Citrico, Tropical</p>
-  </div>
-  <div class="col-md-6 order-md-1" height="500">
-    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto cover" src="./assets/img/tropicalpunch.jpg" alt="">
-   </div>
-</div>
-
-      <!-- TRAGO 6-->
-
-<hr class="featurette-divider">
-
-    
-    <div class="row featurette mb-0">
-      <div class="col-md-6 order-md-2">
-        <h2 class="featurette-heading text-success">Dia de los muertos <span class="text-muted fuenteCursiva"><p>$8.500</span></p></h2>
-        <p class="lead" ><p>Gin, Falernum, Lima, Frutos del bosque, Jengibre Syrup, Anana</p>Un cóctel vibrante inspirado en la celebración y el misterio. Dulce, suave e irresistiblemente tropical — un sorbo que te invita a disfrutar el momento.</p>
-      <p><u>Perfil</u> Dulce tropical </p>
-        <p><u>Falernum:</u> Ron especiado con perfil cítrico</p>
-      </div>
-      <div class="col-md-6 order-md-1" height="500">
-        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto cover" src="./assets/img/esqueleto.jpg" alt=""></div>
-    </div>    
-    <hr class="featurette-divider"> 
-   
-
-<!-- TRAGO 7  -->
-<div class="row featurette mb-0">
-  <div class="col-md-6 order-md-2">
-    <h2 class="featurette-heading text-info">Sweet Dreams <span class="text-muted fuenteCursiva"><p>$7.000</span></p></h2>
-    <p class="lead" ><p>Ron, Chocolate Blanco, Ananá, Banana y Crema</p>Un coctel dulce, con una explosion de sabores en tu paladar para que luego tengas Dulces Sueños.</p>
-  <p><u>Perfil</u> Dulce</p>
-  </div>
-  
-  <div class="col-md-6 order-md-1" height="500">
-    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto cover" src="./assets/img/sweet.jpg" alt="">
-   </div>
-</div>    
-
-<hr class="featurette-divider">
-       
-<!-- TRAGO 9 -->
-<div class="row featurette mb-0">
-  <div class="col-md-6 order-md-2">
-    <h2 class="featurette-heading text-warning">Kairos<span class="text-muted fuenteCursiva"><p>$8.500</span></p></h2>
-    <p class="lead" ><p>Ron, Falernum, Lima, Ananá, Pomelo, Syrup de Kiwi, Infusion de frutas patagonicas.</p><p>Este coctel creado por nuestra bartender Camila fue seleccionado como finalista en el torneo
-    Tiki League Argentina 2024. </p>
-  <p><u>Falernum:</u> Ron especiado con perfil cítrico</p>
-  </div>
-  <div class="col-md-6 order-md-1" height="500">
-    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto cover" src="./assets/img/trago4.jpeg" alt="">
-   </div>
-</div> 
-    
-<!-- TRAGO 13 -->
-<hr class="featurette-divider"> 
-<div class="row featurette mb-0">
-  <div class="col-md-6 order-md-2">
-    <h2 class="featurette-heading text-warning">Tiki Bang <span class="text-muted fuenteCursiva"><p>$8.500</span></p></h2>
-    <p class="lead" ><p>Ron, Syrup de canela, Naranja Mango, Kiwi, Lima, Anana.</p>Una explosión tropical que combina el carácter del ron con la dulzura del mango y el ananá, equilibrado con la frescura del kiwi y los cítricos. Un toque de syrup de canela agrega calidez a este cóctel, ideal para quienes buscan un viaje exótico lleno de sabor.</p>
-  </div>
-  <div class="col-md-6 order-md-1" height="500">
-    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto cover" src="./assets/img/tikibang.jpg" alt="">
-   </div>
-</div>
-      
-      <!-- TRAGO 16 -->
-<hr class="featurette-divider"> 
-<div class="row featurette mb-0">
-  <div class="col-md-6 order-md-2">
-    <h2 class="featurette-heading text-success">Blood of the Kapu Tiki<span class="text-muted fuenteCursiva"><p>$17.000</span></p></h2>
-    <p class="lead" ><p>Ron, lima, Pomelo, Naranja, Granadina, Absenta</p>Un cóctel para compartir que mezcla el carácter del ron con la frescura cítrica de la lima, el pomelo y la naranja, 
-    endulzado con granadina y coronado con un toque de absenta. Ideal para disfrutar en compañía, evoca el espíritu de celebración y aventura de los rituales tiki.</p>
-    </p> 
-    <p><u>Coctel para 2 personas</u></p>
-  </div>
-  <div class="col-md-6 order-md-1" height="500">
-    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto cover" src="./assets/img/blood.jpeg" alt="">
-   </div>
-</div> 
-       
-      <hr class="featurette-divider"> 
-    
-
-
-    <!-- cocteles clasicos -->
-       <div id="clasic">
-        <h2 class="text-center mb-4">Cocteles Clasicos</h2>
-          <table class="table table-dark table-striped">
-        <tbody>
-      <tr>
-        <td>Fernet</td>
-        <td>$10.000</td> 
-      </tr>
-          <tr> 
-        <td>Gin Tonic <a href="https://yugengin.com/">Yugen</a></td>
-        <td>$8.000</td>  
-      </tr>
-          <tr> 
-        <td>Dry Martini</td>
-        <td>$10.000</td>  
-      </tr>
-          <tr> 
-        <td>Gibson</td>
-        <td>$10.000</td>  
-      </tr>
-        <tr> 
-        <td>Garibaldi (Campari con Naranja)</td>
-        <td>$8.000</td>  
-      </tr>
-      <tr> 
-        <td>Cuba Libre</td>
-        <td>$8.000</td>  
-      </tr>
-      <tr> 
-         <tr> 
-        <td>Expresso Martini</td>
-        <td>$8.500</td>  
-      </tr>
-      <tr> 
-        <td>Pisco Sour</td>
-        <td>$15.000</td>  
-      </tr>
-      <tr> 
-        <td>Whisky Sour</td>
-        <td>$15.000</td>  
-      </tr>
-      <tr> 
-        <td>Daiquiris (Frutilla, Durazno, Ananá)</td>
-        <td>$9.500</td>  
-      </tr>
-      <tr></tr>
-        <td>Piña Colada</td>
-        <td>$9.500</td> 
-      </tr>
-      <tr> 
-  <td>Negroni Clasico </td>
-  <td>$8.000</td>  
-</tr>
-            <tr> 
-        <td>Negroni Clarificado </td>
-        <td>$8.000</td>  
-      </tr>
-            <tr> 
-        <td>Negroni Ahumado </td>
-        <td>$8.000</td>  
-      </tr>
-      <tr> 
-        <td>Caipirinha</td>
-        <td>$9.000</td>  
-      </tr>
-      
-      <tr> 
-        <td>Sex on The Beach</td>
-        <td>$8.000</td>  
-      </tr>
-      <tr> 
-        <td>Mojito</td>
-        <td>$9.000</td>  
-      </tr>-->
+        <!-- Classic Cocktails -->
+        <section id="clasicos" style="margin-top: 6rem;">
+            <h2 class="section-title fade-in">Cocteles Clásicos</h2>
+            <table class="menu-table fade-in">
+                <thead>
+                    <tr>
+                        <th>Coctel</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="classicCocktails">
+                    <!-- Classic cocktails will be inserted here -->
                 </tbody>
-      </table>
-    </div>
-
-  <!-- DIAS Y HORARIOS -->
-    <div id="beer">
-      <h2 class="text-center mb-4">CERVEZAS</h2>
-        <table class="table table-dark table-striped">
-          <thead>
-              <tr>
-                <th scope="col">Marca</th>
-                <th scope="col">Capacidad</th>
-                <th scope="col">Precio</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Corona</td>
-                <td>330ml</td>
-                <td>$7.000</td> 
-              </tr>
-              <tr> 
-                <td>Heiniken</td>
-                <td>500ml</td>
-                <td>$9.500</td>  
-              </tr>
-              </tbody>
-          </table>
-      </div>
-
-
-      <div >
-        <h2 class="text-center mb-4">Whisky - Whiskey</h2>
-          <table class="table table-dark table-striped">
-            <thead>
-                <tr>
-                  <th scope="col">Marca</th>
-                  <th scope="col">Precio</th>
-                </tr>
-              </thead>
-              <tbody> 
-                
-                <tr> 
-                  <td>Jhonnie Walker Red</td>
-                  <td>$15.000</td>  
-                </tr>
-                <tr> 
-                  <td>Jhonnie Walker Double Black</td>
-                  <td>$20.000</td>  
-                </tr>
-                 <tr> 
-                  <td>Jhonnie Walker Swing</td>
-                  <td>$30.000</td>  
-                </tr>
-                 <tr> 
-                  <td>Chivas Regal 12</td>
-                  <td>$25.000</td>  
-                </tr>
-              </tbody>
-            <tbody>
-                <tr> 
-                  <td>Jameson</td>
-                  <td>$20.000</td>  
-                </tr>
-                <tr> 
-                  <td>Jameson IPA</td>
-                  <td>$20.000</td>  
-                </tr>
-                <tr> 
-                  <td>Jameson Black Barrel</td>
-                  <td>$25.000</td>  
-                </tr>
-                  </tbody>
-            <tbody>
-                  <td>Bufalo Trade</td>
-                  <td>$25.000</td>  
-                </tr>
-                <tr>
-                  <td>Jack Daniel´s N°7</td>
-                  <td>$20.000</td> 
-                </tr>
-                 <tr>
-                  <td>Maker Marks</td>
-                  <td>$28.000</td> 
-                </tr>
-                <tr> 
-                  <td>Jim Beam White</td>
-                  <td>$20.000</td>  
-                </tr>
-               </tbody>
             </table>
-        </div>
+        </section>
 
-        <div id="sin_alcohol">
-          <h2 class="text-center mb-4">SIN ALCOHOL</h2>
-            <table class="table table-dark table-striped">
-              <thead>
-                  <tr>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Precio</th>
-                  </tr>
+        <!-- Beers -->
+        <section id="cervezas" style="margin-top: 6rem;">
+            <h2 class="section-title fade-in">Cervezas</h2>
+            <table class="menu-table fade-in">
+                <thead>
+                    <tr>
+                        <th>Marca</th>
+                        <th>Capacidad</th>
+                        <th>Precio</th>
+                    </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Gaseosas</td>
-                    <td>$5.000</td> 
-                  </tr>
-                  <tr> 
-                    <td>Limonada</td>
-                    <td>$7.500</td>  
-                  </tr>
-                  <tr></tr>
-                    <td>Agua Con o Sin Gas</td>
-                    <td>$4.500</td> 
-                  </tr>
-          <tr></tr>
-                    <td>Café</td>
-                    <td>$4.000</td> 
-                  </tr>
-                  </tbody>
-              </table>
-          </div>
-  <hr class="featurette-divider">
-  <div id="comida" class="row featurette mb-0">
-    <h2 class="text-center mb-4">Comidas</h2>
-  <table class="table table-dark table-striped">
-    <thead>
-       
-      <tr><h3 class="text-center mb-4">Pizzas</h3></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Mozzarella</td>
-        <td>$16.000</td> 
-      </tr>
-      <tr> 
-        <td>Especial</td>
-        <td>$18.000</td>  
-      </tr>
+                    <tr>
+                        <td>Corona</td>
+                        <td>330ml</td>
+                        <td class="price">$7.000</td>
+                    </tr>
+                    <tr>
+                        <td>Heineken</td>
+                        <td>500ml</td>
+                        <td class="price">$9.500</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-       <tr> 
-        <td>Roquefort</td>
-        <td>$22.000</td>  
-      </tr>
-    </table>
+        <!-- Whisky -->
+        <section style="margin-top: 4rem;">
+            <h2 class="section-title fade-in">Whisky - Whiskey</h2>
+            <table class="menu-table fade-in">
+                <thead>
+                    <tr>
+                        <th>Marca</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Johnnie Walker Red</td><td class="price">$15.000</td></tr>
+                    <tr><td>Johnnie Walker Double Black</td><td class="price">$20.000</td></tr>
+                    <tr><td>Johnnie Walker Swing</td><td class="price">$30.000</td></tr>
+                    <tr><td>Chivas Regal 12</td><td class="price">$25.000</td></tr>
+                    <tr><td>Jameson</td><td class="price">$20.000</td></tr>
+                    <tr><td>Jameson IPA</td><td class="price">$20.000</td></tr>
+                    <tr><td>Jameson Black Barrel</td><td class="price">$25.000</td></tr>
+                    <tr><td>Buffalo Trace</td><td class="price">$25.000</td></tr>
+                    <tr><td>Jack Daniel's N°7</td><td class="price">$20.000</td></tr>
+                    <tr><td>Maker's Mark</td><td class="price">$28.000</td></tr>
+                    <tr><td>Jim Beam White</td><td class="price">$20.000</td></tr>
+                </tbody>
+            </table>
+        </section>
 
-      <!-- hamburguesas -->
-      <table class="table table-dark table-striped">
-      <thead>
-        <tr><h3 class="text-center mb-4">Hamburguesas </h3></tr>
-        <tr><h5 class="text-center mb-2 style="font-size: 0.9rem;">Todas vienen acompañadas de una pequeña porción de papas</h5></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><p>Clasica</p> ( Medallon de carne 120gr., Queso Cheddar)</td>
-          <td>$16.000</td> 
-        </tr>
-        <tr> 
-          <td><p>Completa</p> ( Medallon de carne 120gr., jamon, queso, Huevo, lechuga y tomate)</td>
-          <td>$20.000</td>  
-        </tr>
-        <tr> 
-          <td><p>Big Tiki</p> ( Doble medallon de carne, cheddar, cebolla, Lechuga)</td>
-          <td>$25.000</td>  
-        </tr>
-      </tbody>
-  </table>
+        <!-- Non-Alcoholic -->
+        <section id="sin-alcohol" style="margin-top: 6rem;">
+            <h2 class="section-title fade-in">Sin Alcohol</h2>
+            <table class="menu-table fade-in">
+                <thead>
+                    <tr>
+                        <th>Bebida</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Gaseosas</td><td class="price">$5.000</td></tr>
+                    <tr><td>Limonada</td><td class="price">$7.500</td></tr>
+                    <tr><td>Agua Con o Sin Gas</td><td class="price">$4.500</td></tr>
+                    <tr><td>Café</td><td class="price">$4.000</td></tr>
+                </tbody>
+            </table>
+        </section>
 
-   
-  <table class="table table-dark table-striped">
-    <thead>
-      <tr><h3 class="text-center mb-4">Papas----> Porción Individual </h3></tr>
-    </thead>
-    <tbody>
-     <tr>
-        <td>Cheddar</td>
-        <td>$13.000</td> 
-      </tr>
-      <tr> 
-        <td>Papas Tiki ----> (Cheddar, Bacon, verdeo) </td>
-        <td>$15.000</td>  
-      </tr>
-     <tr> 
-        <td>Spicy</td>
-        <td>$10.000</td>  
-     </tr>
-      <tr> 
-        <td>Clasicas (Salsa a eleccion: Ketchup, Barbacoa)</td>
-        <td>$10.000</td>  
-      </tr>
-    </tbody>
-</table>
-<div id="Free" class="row featurette mb-0">
-  
-  <table class="table table-dark table-striped">
-    <thead>
-      <tr><h3 class="text-center mb-4">Tequeños Venezolanos</h3></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Tequeños x 6 Unidades</td>
-        <td>$10.000</td> 
-      </tr>
-      <tr> 
-        <td>Tequeños x 12 Unidades</td>
-        <td>$18.000</td>  
-      </tr>
-    </tbody>
-</table>
-<div id="Free" class="row featurette mb-0">
-      <div  class="col-md-6 order-md-2">
-        <h2  class="featurette-heading text-warning">Dejanos tu Comentario en Google <span class="text-muted fuenteCursiva"><p>Es muy simple</span></p></h2>
-              <p class="lead" >
-                <h5 class="text-info"><p>Tu Opinion nos interesa!. Dejanos tu comentario sobre nuestro bar y los cocteles que disfrutaste!. Si algo no te gusto ello nos ayudara a mejorar nuestro servicio.
-                </p>
-                <p>
-                  <a href="https://g.page/r/Caw83WM1wKHrEBM/review">Toca Aquí para dejar tu comentario</a>
-                </p>
-                </h5>
-              </p>  
-      </div> 
+        <!-- Food -->
+        <section id="comida" style="margin-top: 6rem;">
+            <h2 class="section-title fade-in">Comidas</h2>
+            
+            <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🍕 Pizzas</h3>
+            <table class="menu-table fade-in">
+                <tbody>
+                    <tr><td>Mozzarella</td><td class="price">$16.000</td></tr>
+                    <tr><td>Especial</td><td class="price">$18.000</td></tr>
+                    <tr><td>Roquefort</td><td class="price">$22.000</td></tr>
+                </tbody>
+            </table>
 
+            <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🍔 Hamburguesas</h3>
+            <p style="text-align: center; color: var(--secondary); margin-bottom: 1rem;">Todas vienen con papas</p>
+            <table class="menu-table fade-in">
+                <tbody>
+                    <tr><td>Clásica <span style="font-size: 0.85rem; opacity: 0.7;">(Medallón 120gr, Queso Cheddar)</span></td><td class="price">$16.000</td></tr>
+                    <tr><td>Completa <span style="font-size: 0.85rem; opacity: 0.7;">(Medallón 120gr, Jamón, Queso, Huevo, Lechuga, Tomate)</span></td><td class="price">$20.000</td></tr>
+                    <tr><td>Big Tiki <span style="font-size: 0.85rem; opacity: 0.7;">(Doble Medallón, Cheddar, Cebolla, Lechuga)</span></td><td class="price">$25.000</td></tr>
+                </tbody>
+            </table>
 
+            <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🍟 Papas</h3>
+            <table class="menu-table fade-in">
+                <tbody>
+                    <tr><td>Papas Tiki (Cheddar, Bacon, Verdeo)</td><td class="price">$15.000</td></tr>
+                    <tr><td>Cheddar</td><td class="price">$13.000</td></tr>
+                    <tr><td>Spicy</td><td class="price">$10.000</td></tr>
+                    <tr><td>Clásicas (Salsa a elección)</td><td class="price">$10.000</td></tr>
+                </tbody>
+            </table>
 
+            <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🇻🇪 Tequeños Venezolanos</h3>
+            <table class="menu-table fade-in">
+                <tbody>
+                    <tr><td>6 Unidades</td><td class="price">$10.000</td></tr>
+                    <tr><td>12 Unidades</td><td class="price">$18.000</td></tr>
+                </tbody>
+            </table>
+        </section>
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-    <script src="./js/bootstrap.bundle.min.js"></script>  
-  <!-- Vinculamos el archivo JS externo -->
-    <script src="js/script.js"></script>
-
-    <hr class="featurette-divider">
-
-  </div><!-- /.container -->
-   <!-- FOOTER -->
-   <hr class="featurette-divider">
-    <footer class="container-fluid bg-dark p-5 mb-0 ">
-      <p class="float-end"><a href="#">Volver arriba</a></p>
-      <p>&copy; 2024 Ezequiel Morales. &middot; <a href="#">Imagenes ilustrativas propiedad de Tiki House</a> &middot;</p>
-    </footer>
-  
+        <!-- Google Review CTA -->
+        <section style="margin-top: 6rem; text-align: center; padding: 3rem; background: rgba(255, 107, 157, 0.1); border-radius: 25px;">
+            <h2 style="font-family: var(--font-fun); font-size: 2.5rem; margin-bottom: 1rem;">💬 Tu Opinión Importa</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; line-height: 1.6;">¡Comparte tu experiencia en Tiki House! Tus comentarios nos ayudan a mejorar y a crear el mejor paraíso tropical para ti.</p>
+            <a href="https://g.page/r/Caw83WM1wKHrEBM/review" class="hero-cta" target="_blank">Dejar Comentario en Google ⭐</a>
+        </section>
     </main>
 
-      
-  </body>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Tiki House Bar - Buenos Aires</p>
+            <p style="margin-top: 1rem;">
+                <a href="#" class="footer-link">Volver arriba ↑</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Cocktails Data
+        const regularCocktails = [
+            {
+                name: "Zombie",
+                price: "$8.500",
+                image: "./assets/img/zombieee.jpg",
+                ingredients: "Ron Blanco, Ron Dorado, Falernum, Lima, Pomelo, Canela y mucho FUEGO!",
+                description: "El Zombie es un cóctel tiki legendario, creado en 1934 por Donn Beach. Famoso por 'revivir a los muertos'. Tradicionalmente limitado a 2 por persona por su alto contenido alcohólico.",
+                profile: "Agridulce, Especiado"
+            },
+            {
+                name: "Tiki Barrel",
+                price: "$8.500",
+                image: "./assets/img/tikibarrel.jpg",
+                ingredients: "Ron Blanco, Ron Dorado, Maracuyá, Lima, Naranja, Ananá, Banana y Vainilla",
+                description: "Una de las estrellas de la casa. Una combinación perfecta entre el dulce y un toque cítrico. La cura perfecta para un corazón roto.",
+                profile: "Dulce"
+            },
+            {
+                name: "Shark",
+                price: "$8.500",
+                image: "./assets/img/sharknuevo.jpg",
+                ingredients: "Ron Blanco, Ron Dorado, Syrup de Frambuesas, Cynar, Vermut Rosso, Ananá y Lima",
+                description: "Una versión de Ludovico De Biaggi del coctel Shark Tooth. Con notas amargas que te invitan a dejarte atrapar por los dientes de nuestro Shark.",
+                profile: "Amargo, Cítrico"
+            },
+            {
+                name: "Kikuya Lapu",
+                price: "$8.500",
+                image: "./assets/img/kikuyaa.jpg",
+                ingredients: "Ron, Syrup Maracuyá, Limón, Naranja, Ananá, Pomelo, Arándanos",
+                description: "Un coctel con perfil dulce, tropical y un toque cítrico. Ideal para quienes buscan equilibrio entre dulzura y acidez, llevándote al Pacífico.",
+                profile: "Agridulce"
+            },
+            {
+                name: "Mai Tai",
+                price: "$14.000",
+                image: "./assets/img/trago3.jpeg",
+                ingredients: "Ron de Jamaica, Orgeat, Lima, Orange Curaçao",
+                description: "Un clásico equilibrado con matices tropicales, cítrico y almendras. Creado por Trader Vic's en 1944. Los expertos dicen que debe probarse al menos una vez.",
+                profile: "Cítrico"
+            },
+            {
+                name: "Ocean Blue",
+                price: "$8.500",
+                image: "./assets/img/oceanblue.jpg",
+                ingredients: "Vodka de Ananá, Ron Blanco, Blue Curaçao, Coco, Ananá, Syrup de Vainilla",
+                description: "Un chapuzón tropical directo al paraíso: fresco, vibrante y con el color del mar que invita a brindar como si estuvieras de vacaciones eternas.",
+                profile: "Agridulce, Tropical"
+            },
+            {
+                name: "Tropical Punch",
+                price: "$7.900",
+                image: "./assets/img/tropicalpunch.jpg",
+                ingredients: "Ron, Aperol, Naranja Mango, Lima, Syrup de Jengibre",
+                description: "El golpe alegre del verano eterno: frutal, chispeante y con ese toque atrevido que enciende cualquier aventura.",
+                profile: "Cítrico, Tropical"
+            },
+            {
+                name: "Día de los Muertos",
+                price: "$8.500",
+                image: "./assets/img/esqueleto.jpg",
+                ingredients: "Gin, Falernum, Lima, Frutos del bosque, Jengibre Syrup, Ananá",
+                description: "Un cóctel vibrante inspirado en la celebración y el misterio. Dulce, suave e irresistiblemente tropical — un sorbo que te invita a disfrutar el momento.",
+                profile: "Dulce Tropical"
+            },
+            {
+                name: "Sweet Dreams",
+                price: "$7.000",
+                image: "./assets/img/sweet.jpg",
+                ingredients: "Ron, Chocolate Blanco, Ananá, Banana y Crema",
+                description: "Un coctel dulce, con una explosión de sabores en tu paladar para que luego tengas Dulces Sueños.",
+                profile: "Dulce"
+            },
+            {
+                name: "Kairos",
+                price: "$8.500",
+                image: "./assets/img/trago4.jpeg",
+                ingredients: "Ron, Falernum, Lima, Ananá, Pomelo, Syrup de Kiwi, Infusión de frutas patagónicas",
+                description: "Este coctel creado por nuestra bartender Camila fue seleccionado como finalista en el torneo Tiki League Argentina 2024.",
+                profile: "Tropical, Especiado"
+            },
+            {
+                name: "Tiki Bang",
+                price: "$8.500",
+                image: "./assets/img/tikibang.jpg",
+                ingredients: "Ron, Syrup de canela, Naranja Mango, Kiwi, Lima, Ananá",
+                description: "Una explosión tropical que combina el carácter del ron con la dulzura del mango y el ananá, equilibrado con la frescura del kiwi y los cítricos.",
+                profile: "Tropical, Especiado"
+            },
+            {
+                name: "Blood of the Kapu Tiki",
+                price: "$17.000",
+                image: "./assets/img/blood.jpeg",
+                ingredients: "Ron, Lima, Pomelo, Naranja, Granadina, Absenta",
+                description: "Un cóctel para compartir que mezcla el carácter del ron con la frescura cítrica, endulzado con granadina y coronado con absenta. Para 2 personas.",
+                profile: "Compartir (2 personas)"
+            }
+        ];
+
+        const wednesdayCocktails = [
+            {
+                name: "Daiquiri Frozen Frutilla",
+                price: "$4.750",
+                originalPrice: "$9.500",
+                image: "./assets/img/oceanblue.jpg",
+                ingredients: "Ron, Frutilla, Lima, Azúcar",
+                description: "¡PROMO MIÉRCOLES 2x1! Clásico daiquiri frozen con frutillas frescas, perfecto para compartir.",
+                profile: "Dulce, Refrescante"
+            },
+            {
+                name: "Daiquiri Frozen Durazno",
+                price: "$4.750",
+                originalPrice: "$9.500",
+                image: "./assets/img/oceanblue.jpg",
+                ingredients: "Ron, Durazno, Lima, Azúcar",
+                description: "¡PROMO MIÉRCOLES 2x1! Suave y frutal, con el dulzor natural del durazno.",
+                profile: "Dulce, Frutal"
+            },
+            {
+                name: "Daiquiri Frozen Ananá",
+                price: "$4.750",
+                originalPrice: "$9.500",
+                image: "./assets/img/oceanblue.jpg",
+                ingredients: "Ron, Ananá, Lima, Azúcar",
+                description: "¡PROMO MIÉRCOLES 2x1! Tropical y refrescante, con el sabor vibrante del ananá.",
+                profile: "Tropical, Refrescante"
+            },
+            {
+                name: "Espresso Martini",
+                price: "$4.250",
+                originalPrice: "$8.500",
+                image: "./assets/img/sweet.jpg",
+                ingredients: "Vodka, Licor de Café, Espresso, Azúcar",
+                description: "¡PROMO MIÉRCOLES 2x1! El clásico que combina energía y sofisticación en cada sorbo.",
+                profile: "Dulce, Energético"
+            }
+        ];
+
+        const classicCocktails = [
+            { name: "Fernet", price: "$10.000" },
+            { name: "Gin Tonic Yugen", price: "$8.000" },
+            { name: "Dry Martini", price: "$10.000" },
+            { name: "Gibson", price: "$10.000" },
+            { name: "Garibaldi (Campari con Naranja)", price: "$8.000" },
+            { name: "Cuba Libre", price: "$8.000" },
+            { name: "Espresso Martini", price: "$8.500" },
+            { name: "Pisco Sour", price: "$15.000" },
+            { name: "Whisky Sour", price: "$15.000" },
+            { name: "Daiquiris (Frutilla, Durazno, Ananá)", price: "$9.500" },
+            { name: "Piña Colada", price: "$9.500" },
+            { name: "Negroni Clásico", price: "$8.000" },
+            { name: "Negroni Clarificado", price: "$8.000" },
+            { name: "Negroni Ahumado", price: "$8.000" },
+            { name: "Caipirinha", price: "$9.000" },
+            { name: "Sex on The Beach", price: "$8.000" },
+            { name: "Mojito", price: "$9.000" }
+        ];
+
+        // Check if today is Wednesday
+        function isWednesday() {
+            return new Date().getDay() === 3;
+        }
+
+        // Initialize menu
+        function initMenu() {
+            const cocktailsToShow = isWednesday() ? wednesdayCocktails : regularCocktails;
+            const cocktailsGrid = document.getElementById('cocktailsGrid');
+            const wednesdayBanner = document.getElementById('wednesdayBanner');
+
+            // Show Wednesday banner if it's Wednesday
+            if (isWednesday()) {
+                wednesdayBanner.style.display = 'block';
+                wednesdayBanner.innerHTML = `
+                    <div class="wednesday-banner">
+                        <h2>🎉 ¡ESPECIAL MIÉRCOLES! 🎉</h2>
+                        <p>2x1 en Daiquiris Frozen y Espresso Martini de 19:00 a 21:30hs</p>
+                    </div>
+                `;
+
+                // Update modal for Wednesday
+                document.getElementById('modalTitle').innerHTML = '🎉 ¡Es Miércoles de Promos! 🎉';
+                document.getElementById('modalText').innerHTML = 'Hoy de 19:00 a 21:30hs tenemos 2x1 en Daiquiris Frozen y Espresso Martini. ¡Acércate a la barra para ordenar!';
+            }
+
+            // Render cocktails
+            cocktailsGrid.innerHTML = cocktailsToShow.map((cocktail, index) => `
+                <div class="cocktail-card fade-in" style="animation-delay: ${index * 0.1}s">
+                    <img src="${cocktail.image}" alt="${cocktail.name}" class="cocktail-image" onerror="this.src='./assets/img/trago4.jpeg'">
+                    <div class="cocktail-info">
+                        <h3 class="cocktail-name">${cocktail.name}</h3>
+                        <p class="cocktail-price">
+                            ${cocktail.originalPrice ? `<span style="text-decoration: line-through; opacity: 0.5;">${cocktail.originalPrice}</span> ` : ''}
+                            ${cocktail.price}
+                        </p>
+                        <p class="cocktail-ingredients">${cocktail.ingredients}</p>
+                        <p class="cocktail-description">${cocktail.description}</p>
+                        <span class="cocktail-profile">${cocktail.profile}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render classic cocktails
+            const classicCocktailsTable = document.getElementById('classicCocktails');
+            classicCocktailsTable.innerHTML = classicCocktails.map(cocktail => `
+                <tr>
+                    <td>${cocktail.name}</td>
+                    <td class="price">${cocktail.price}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Close welcome modal
+        function closeModal() {
+            document.getElementById('welcomeModal').style.display = 'none';
+        }
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // Scroll animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu if open
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            initMenu();
+            handleScrollAnimations();
+        });
+
+        window.addEventListener('scroll', handleScrollAnimations);
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const nav = document.getElementById('navMenu');
+            const toggle = document.querySelector('.mobile-toggle');
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                nav.classList.remove('active');
+            }
+        });
+    </script>
+</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
