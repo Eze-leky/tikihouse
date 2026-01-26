@@ -58,6 +58,72 @@
             border-color: #44403c;
             box-shadow: 0 10px 30px -10px rgba(0,0,0,0.8);
         }
+
+        /* Estilos del modal mejorado */
+        .modal-content {
+            max-width: 1200px;
+            width: 95%;
+        }
+
+        .media-tabs {
+            display: flex;
+            gap: 0;
+            border-radius: 12px 12px 0 0;
+            overflow: hidden;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 16px;
+            background: #292524;
+            border: none;
+            color: #78716c;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .tab-button:hover {
+            background: #1c1917;
+            color: #a8a29e;
+        }
+
+        .tab-button.active {
+            background: #1c1917;
+            color: #f59e0b;
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, #f59e0b, #fb923c);
+        }
+
+        .media-container {
+            background: #1c1917;
+            border-radius: 0 0 12px 12px;
+            overflow: hidden;
+        }
+
+        .media-item {
+            display: none;
+        }
+
+        .media-item.active {
+            display: block;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -117,43 +183,142 @@
         <p class="text-stone-600 text-sm">© 2026 Tiki House. La Plata, Argentina. <br>Hecho con <span class="text-red-800">❤</span> y mucho Ron.</p>
     </footer>
 
-    <div id="imageModal" class="fixed inset-0 bg-black/95 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm cursor-zoom-out" onclick="closeModal()">
-        <img id="modalImg" src="" alt="Zoom" class="max-w-full max-h-[90vh] rounded-lg shadow-[0_0_50px_-10px_rgba(245,158,11,0.3)] transition-transform duration-300 scale-90 opacity-0">
+    <!-- Modal mejorado con tabs -->
+    <div id="mediaModal" class="fixed inset-0 bg-black/95 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <!-- Botón cerrar -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-50 bg-stone-800 hover:bg-stone-700 text-white p-2 rounded-full transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                </svg>
+            </button>
+
+            <!-- Título del producto -->
+            <div class="bg-stone-900 px-6 py-4 rounded-t-xl">
+                <h3 id="modalTitle" class="font-tiki text-2xl text-amber-400"></h3>
+            </div>
+
+            <!-- Tabs -->
+            <div class="media-tabs">
+                <button class="tab-button active" onclick="switchTab('photo')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 inline mr-2">
+                        <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z" clip-rule="evenodd" />
+                    </svg>
+                    Foto
+                </button>
+                <button class="tab-button" onclick="switchTab('video')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 inline mr-2">
+                        <path d="M4.5 4.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h8.25a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3H4.5ZM19.94 18.75l-2.69-2.69V7.94l2.69-2.69c.944-.945 2.56-.276 2.56 1.06v11.38c0 1.336-1.616 2.005-2.56 1.06Z" />
+                    </svg>
+                    Video
+                </button>
+            </div>
+
+            <!-- Contenedor de medios -->
+            <div class="media-container">
+                <div id="photoContent" class="media-item active p-4">
+                    <img id="modalImg" src="" alt="Producto" class="w-full h-auto max-h-[70vh] object-contain rounded-lg">
+                </div>
+                <div id="videoContent" class="media-item p-4">
+                    <video id="modalVideo" controls class="rounded-lg">
+                        <source id="videoSource" src="" type="video/mp4">
+                        Tu navegador no soporta videos.
+                    </video>
+                </div>
+            </div>
+        </div>
     </div>
 
 
     <script>
         // --- DATOS DE PRODUCTOS (Simulación de Base de Datos) ---
         const products = [
-            { name: "Zombie", price: "30.000", img: "img/zombie.jpg", wa_link: "Zombie!", tag: "Clásico", inStock: true },
-            { name: "Shark Attack", price: "40.000", img: "img/sharknuevo.jpg", wa_link: "Shark!", tag: "Best Seller", inStock: true },
-            { name: "Dr. Funk", price: "30.000", img: "img/funk.jpg", wa_link: "Dr.%20Funk!", inStock: true },
-            { name: "Sunset Spirit", price: "30.000", img: "img/risas.jpg", wa_link: "Sunset%20Spirit!", inStock: true },
-            { name: "Esqueleto", price: "30.000", img: "img/esqueleto.jpg", wa_link: "Mug%20Esqueleto!", tag: "Terror Tiki", inStock: false },
-            { name: "Maui God", price: "30.000", img: "img/moha.jpg", wa_link: "Mug%20Maui!", inStock: true },
-            { name: "Zombie V2", price: "30.000", img: "img/zombie2.jpeg", wa_link: "Zombie2!", detail: "2 Colores Disp.", inStock: true },
-            { name: "Kanaloa", price: "20.000", img: "img/kanaloaa.jpg", wa_link: "Kanaloa!", detail: "Oferta Especial", inStock: true }
+            { 
+                name: "Zombie", 
+                price: "30.000", 
+                img: "img/zombie.jpg", 
+                video: "videos/vzombie.mp4", // Agrega tu video aquí
+                wa_link: "Zombie!", 
+                tag: "Clásico", 
+                inStock: true 
+            },
+            { 
+                name: "Shark Attack", 
+                price: "40.000", 
+                img: "img/sharknuevo.jpg", 
+                video: "videos/shark.mp4",
+                wa_link: "Shark!", 
+                tag: "Best Seller", 
+                inStock: true 
+            },
+            { 
+                name: "Dr. Funk", 
+                price: "30.000", 
+                img: "img/funk.jpg", 
+                video: "videos/funk.mp4",
+                wa_link: "Dr.%20Funk!", 
+                inStock: true 
+            },
+            { 
+                name: "Sunset Spirit", 
+                price: "30.000", 
+                img: "img/risas.jpg", 
+                video: "videos/sunset.mp4",
+                wa_link: "Sunset%20Spirit!", 
+                inStock: true 
+            },
+            { 
+                name: "Esqueleto", 
+                price: "30.000", 
+                img: "img/esqueleto.jpg", 
+                video: "videos/vskull.mp4",
+                wa_link: "Mug%20Esqueleto!", 
+                tag: "Terror Tiki", 
+                inStock: false 
+            },
+            { 
+                name: "Maui God", 
+                price: "30.000", 
+                img: "img/moha.jpg", 
+                video: "videos/vkikuya.mp4",
+                wa_link: "Mug%20Maui!", 
+                inStock: true 
+            },
+            { 
+                name: "Zombie V2", 
+                price: "30.000", 
+                img: "img/zombie2.jpeg", 
+                video: "videos/zombie2.mp4",
+                wa_link: "Zombie2!", 
+                detail: "2 Colores Disp.", 
+                inStock: true 
+            },
+            { 
+                name: "Kanaloa", 
+                price: "20.000", 
+                img: "img/kanaloaa.jpg", 
+                video: "videos/kanaloa.mp4",
+                wa_link: "Kanaloa!", 
+                detail: "Oferta Especial", 
+                inStock: true 
+            }
         ];
 
         // --- RENDERIZADO DE PRODUCTOS ---
         const container = document.getElementById('product-container');
 
-        products.forEach(product => {
+        products.forEach((product, index) => {
             // Lógica para etiquetas (tags)
             let tagHTML = '';
             if (product.tag && product.inStock) {
-                // Diferentes colores según el tag
                 const tagColor = product.tag === 'Best Seller' ? 'bg-amber-500' : 'bg-stone-700';
                 tagHTML = `<span class="absolute top-4 right-4 ${tagColor} text-stone-900 text-xs font-bold px-3 py-1 rounded-full z-20 shadow-lg">${product.tag}</span>`;
             } else if (!product.inStock) {
-                // Etiqueta de sin stock
                 tagHTML = `<span class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full z-20 shadow-lg">Sin Stock</span>`;
             }
 
-            // Clase adicional si está sin stock
             const stockClass = product.inStock ? '' : 'out-of-stock';
 
-            // Botón de compra o notificación
             let actionButton = '';
             if (product.inStock) {
                 actionButton = `
@@ -184,7 +349,7 @@
                         ${!product.inStock ? '<div class="absolute inset-0 bg-black/40 z-10 flex items-center justify-center pointer-events-none"><span class="text-white font-bold text-2xl opacity-80 rotate-[-15deg] transform">AGOTADO</span></div>' : ''}
                         <img src="${product.img}" alt="${product.name}" 
                              class="w-full h-full object-cover transition-transform duration-700 ${product.inStock ? 'group-hover:scale-110 group-hover:rotate-1 cursor-zoom-in' : ''} relative z-0"
-                             ${product.inStock ? `onclick="openModal('${product.img}')"` : ''}
+                             ${product.inStock ? `onclick="openModal(${index})"` : ''}
                              onerror="this.src='https://placehold.co/400x500/1c1917/f59e0b?text=Tiki+Mug';">
                     </div>
 
@@ -205,28 +370,61 @@
             container.innerHTML += cardHTML;
         });
 
-        // --- LÓGICA DEL MODAL (ZOOM) ---
-        const modal = document.getElementById('imageModal');
+        // --- LÓGICA DEL MODAL CON TABS ---
+        const modal = document.getElementById('mediaModal');
         const modalImg = document.getElementById('modalImg');
+        const modalVideo = document.getElementById('modalVideo');
+        const videoSource = document.getElementById('videoSource');
+        const modalTitle = document.getElementById('modalTitle');
 
-        function openModal(src) {
-            modalImg.src = src;
+        function openModal(productIndex) {
+            const product = products[productIndex];
+            
+            // Establecer contenido
+            modalTitle.textContent = product.name;
+            modalImg.src = product.img;
+            videoSource.src = product.video;
+            modalVideo.load(); // Recargar el video
+            
+            // Mostrar modal
             modal.classList.remove('hidden');
-            // Pequeño delay para permitir la animación de entrada
-            setTimeout(() => {
-                modalImg.classList.remove('scale-90', 'opacity-0');
-                modalImg.classList.add('scale-100', 'opacity-100');
-            }, 50);
+            
+            // Resetear a la tab de foto
+            switchTab('photo');
         }
 
-        function closeModal() {
-            modalImg.classList.remove('scale-100', 'opacity-100');
-            modalImg.classList.add('scale-90', 'opacity-0');
-            // Esperar a que termine la animación de salida para ocultar
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
+        function closeModal(event) {
+            // Pausar video si está reproduciendo
+            modalVideo.pause();
+            modal.classList.add('hidden');
         }
+
+        function switchTab(tab) {
+            // Actualizar botones
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.tab-button').classList.add('active');
+            
+            // Mostrar contenido correspondiente
+            const photoContent = document.getElementById('photoContent');
+            const videoContent = document.getElementById('videoContent');
+            
+            if (tab === 'photo') {
+                photoContent.classList.add('active');
+                videoContent.classList.remove('active');
+                modalVideo.pause();
+            } else {
+                videoContent.classList.add('active');
+                photoContent.classList.remove('active');
+            }
+        }
+
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
