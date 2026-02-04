@@ -783,9 +783,24 @@
     </footer>
 
     <script>
-        const TEST_MODE = false;
-        const TEST_DAY = 'promo';
+        // ============================================
+        // MODO DE PRUEBA
+        // ============================================
+        // Para probar los diferentes días:
+        // 1. Cambia TEST_MODE a true
+        // 2. Cambia TEST_DAY a uno de estos valores:
+        //    - 'wednesday' = Ver carta de clásicos (Miércoles)
+        //    - 'promo' = Ver promo 2x1 (Jueves/Domingo)
+        //    - 'regular' = Ver carta tiki normal
+        // 3. Guarda el archivo
+        // 4. Refresca la página (F5 o Ctrl+R)
+        // 5. Abre la Consola (F12) para ver los logs
+        // ============================================
+        
+        const TEST_MODE = false;  // ← Cambia a true para activar modo prueba
+        const TEST_DAY = 'wednesday';  // ← Cambia a: 'wednesday', 'promo', o 'regular'
 
+        // Cocktails Data - CARTA REGULAR (Lunes, Martes, Viernes, Sábado)
         const regularCocktails = [
             {
                 name: "Zombie",
@@ -913,7 +928,7 @@
             {
                 name: "Aviation Cocktail",
                 price: "$11.000",
-                image: "./assets/img/clasicos/aviation.jpeg",
+                image: "./assets/img/clasicos/vesper.jpg",
                 ingredients: "Gin, Maraschino, Crème de Violette, Limón",
                 description: "Un clásico pre-prohibición con su característico color violeta cielo. Floral, elegante y misterioso.",
                 profile: "Floral, Cítrico"
@@ -921,7 +936,7 @@
             {
                 name: "Vesper",
                 price: "$12.000",
-                image: "./assets/img/clasicos/vesper2.jpg",
+                image: "./assets/img/clasicos/vesper.jpg",
                 ingredients: "Gin, Vodka, Lillet Blanc",
                 description: "El Martini de James Bond. Fuerte, elegante y con carácter. Agitado, no revuelto.",
                 profile: "Seco, Potente"
@@ -938,7 +953,7 @@
                 name: "Old Fashioned",
                 price: "$12.000",
                 image: "./assets/img/clasicos/oldfa.jpg",
-                ingredients: "Whisky, Azúcar, Angostura",
+                ingredients: "Whisky, Azúcar, Angostura, Naranja",
                 description: "El abuelo de todos los cocteles. Simple, elegante y poderoso. Whisky con azúcar, amargos y twist de naranja.",
                 profile: "Fuerte, Aromático"
             },
@@ -946,7 +961,7 @@
                 name: "Penicillin",
                 price: "$11.000",
                 image: "./assets/img/clasicos/Penicillin.jpg",
-                ingredients: "Whisky Escocés, Jengibre, Miel, Limón",
+                ingredients: "Whisky Escocés, Jengibre, Miel, Limón, Whisky Islay",
                 description: "Creación moderna que se volvió clásico instantáneo. Especiado, ahumado y curativo como su nombre indica.",
                 profile: "Especiado, Ahumado"
             },
@@ -954,7 +969,7 @@
                 name: "Blood and Sand",
                 price: "$10.000",
                 image: "./assets/img/clasicos/blood.jpg",
-                ingredients: "Whisky Escocés, Vermouth Rosso, Cherry, Naranja",
+                ingredients: "Whisky Escocés, Vermouth Rosso, Cherry Heering, Naranja",
                 description: "Clásico escocés inspirado en una película de 1922. Equilibrio perfecto entre dulce, amargo y frutal.",
                 profile: "Frutal, Equilibrado"
             },
@@ -970,7 +985,7 @@
                 name: "Pisco Sour",
                 price: "$15.000",
                 image: "./assets/img/clasicos/piscosour.jpg",
-                ingredients: "Pisco, Limón, Jarabe, Clara de huevo (Albumina), Angostura",
+                ingredients: "Pisco, Limón, Jarabe, Clara de huevo, Angostura",
                 description: "El orgullo sudamericano. Refrescante, espumoso y con el carácter único del pisco.",
                 profile: "Cítrico, Espumoso"
             },
@@ -983,10 +998,10 @@
                 profile: "Amargo, Refrescante"
             },
             {
-                name: "Tiki Clover Club",
+                name: "Clover Club",
                 price: "$10.000",
                 image: "./assets/img/clasicos/clover.jpg",
-                ingredients: "Gin, Frutos del Bosque, Limón, Clara de huevo (Albumina)",
+                ingredients: "Gin, Frambuesa, Limón, Clara de huevo, Jarabe",
                 description: "Clásico pre-prohibición con elegante espuma rosa. Frutal, sedoso y perfectamente equilibrado.",
                 profile: "Frutal, Sedoso"
             }
@@ -1283,8 +1298,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
