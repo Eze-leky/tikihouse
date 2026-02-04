@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Tiki House Bar - Coctelería Tropical Exótica en La Plata">
+    <meta name="description" content="Tiki House Bar - Coctelería Tropical Exótica en Buenos Aires">
     <title>Tiki House Bar - Paraíso Tropical</title>
     <link rel="icon" href="./assets/img/cocktail.png" type="image/png" sizes="96x96">
     
@@ -658,7 +658,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">Paraíso Tropical</h1>
-            <p class="hero-subtitle">Cocteles exóticos únicos en La Plata</p>
+            <p class="hero-subtitle">Cocteles exóticos únicos en Buenos Aires</p>
             <a href="#cocktails" class="hero-cta">Explorar Carta 🌺</a>
         </div>
     </section>
@@ -775,7 +775,7 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2026 Tiki House Bar - La Plata</p>
+            <p>&copy; 2025 Tiki House Bar - Buenos Aires</p>
             <p style="margin-top: 1rem;">
                 <a href="#" class="footer-link">Volver arriba ↑</a>
             </p>
@@ -783,8 +783,8 @@
     </footer>
 
     <script>
-        const TEST_MODE = true; //cambiar a true para probar
-        const TEST_DAY = 'promo'; // Opciones: 'wednesday', 'promo', 'regular'
+        const TEST_MODE = false;
+        const TEST_DAY = 'wednesday';
 
         const regularCocktails = [
             {
@@ -1098,13 +1098,15 @@
             const dayNames = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
             console.log('📅 Hoy es:', dayNames[day]);
             
+            // Miércoles = Solo banner de promo, carta normal
             if (day === 3) {
-                console.log('🎩 Día de Clásicos');
+                console.log('🎉 Miércoles - Banner de Promo 2x1');
                 return 'wednesday';
             }
             
+            // Jueves y Domingo = Carta completa de promo
             if (day === 4 || day === 0) {
-                console.log('🎉 Día de Promo 2x1');
+                console.log('🎉 Jueves/Domingo - Carta de Promo 2x1');
                 return 'promo';
             }
             
@@ -1125,24 +1127,26 @@
             banner.style.display = 'none';
             banner.innerHTML = '';
             
+            // MIÉRCOLES - Solo banner, carta normal
             if (dayType === 'wednesday') {
-                cocktailsToShow = wednesdayCocktails;
-                foodToShow = wednesdayFood;
-                cocktailsTitle.textContent = 'Cocteles Clásicos de Siempre';
-                classicSection.style.display = 'none';
+                cocktailsToShow = regularCocktails; // ← CARTA NORMAL
+                foodToShow = regularFood; // ← COMIDA NORMAL
+                cocktailsTitle.textContent = 'Nuestros Cocteles Tiki';
+                classicSection.style.display = 'block'; // ← MUESTRA TABLA DE CLÁSICOS
                 
                 banner.style.display = 'block';
                 banner.innerHTML = `
-                    <div class="banner-content classic">
-                        <h2 style="color: #ECF0F1;">🎩 Miércoles de Clásicos 🎩</h2>
-                        <p style="font-weight: 600; color: #ECF0F1;">Hoy disfrutá de nuestra selección de coctelería clásica</p>
-                        <p style="color: #BDC3C7;">Los mejores clásicos de la coctelería mundial</p>
+                    <div class="banner-content">
+                        <h2 style="color: var(--dark);">🎉 ¡PROMO MIÉRCOLES 2x1! 🎉</h2>
+                        <p style="font-weight: 600; font-size: 1.15rem; color: var(--darker);">2x1 en Daiquiris Frozen y Espresso Martini</p>
+                        <p style="color: var(--darker);">De 19:00 a 21:30hs</p>
                     </div>
                 `;
                 
-                document.getElementById('modalTitle').innerHTML = '🎩 ¡Miércoles de Clásicos! 🎩';
-                document.getElementById('modalText').innerHTML = 'Hoy disfrutá de nuestra carta especial con los mejores cocteles clásicos de la coctelería mundial. ¡Acércate a la barra para ordenar!';
+                document.getElementById('modalTitle').innerHTML = '🎉 ¡Promo Miércoles 2x1! 🎉';
+                document.getElementById('modalText').innerHTML = '<strong>Hoy de 19:00 a 21:30hs tenemos 2x1</strong> en Daiquiris Frozen Saborizados y Espresso Martini. ¡Acércate a la barra para ordenar!';
             }
+            // JUEVES Y DOMINGO - Carta de promo
             else if (dayType === 'promo') {
                 cocktailsToShow = promoCocktails;
                 foodToShow = regularFood;
@@ -1161,6 +1165,7 @@
                 document.getElementById('modalTitle').innerHTML = '🎉 ¡Promo 2x1! 🎉';
                 document.getElementById('modalText').innerHTML = '<strong>Hoy de 19:00 a 21:30hs tenemos 2x1</strong> en Daiquiris Frozen Saborizados y Espresso Martini. ¡Acércate a la barra!';
             }
+            // DÍAS REGULARES
             else {
                 cocktailsTitle.textContent = 'Nuestros Cocteles Tiki';
                 classicSection.style.display = 'block';
@@ -1270,9 +1275,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
