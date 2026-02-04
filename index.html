@@ -797,7 +797,7 @@
         // 5. Abre la Consola (F12) para ver los logs
         // ============================================
         
-        const TEST_MODE = true;  // ← Cambia a true para activar modo prueba
+        const TEST_MODE = false;  // ← Cambia a true para activar modo prueba
         const TEST_DAY = 'wednesday';  // ← Cambia a: 'wednesday', 'promo', o 'regular'
 
         // Cocktails Data - CARTA REGULAR (Lunes, Martes, Viernes, Sábado)
@@ -928,7 +928,7 @@
             {
                 name: "Aviation Cocktail",
                 price: "$11.000",
-                image: "./assets/img/clasicos/vesper.jpg",
+                image: "./assets/img/clasicos/aviation.jpeg",
                 ingredients: "Gin, Maraschino, Crème de Violette, Limón",
                 description: "Un clásico pre-prohibición con su característico color violeta cielo. Floral, elegante y misterioso.",
                 profile: "Floral, Cítrico"
@@ -936,7 +936,7 @@
             {
                 name: "Vesper",
                 price: "$12.000",
-                image: "./assets/img/clasicos/vesper.jpg",
+                image: "./assets/img/clasicos/vesper2.jpg",
                 ingredients: "Gin, Vodka, Lillet Blanc",
                 description: "El Martini de James Bond. Fuerte, elegante y con carácter. Agitado, no revuelto.",
                 profile: "Seco, Potente"
@@ -1169,12 +1169,12 @@
                 document.getElementById('modalTitle').innerHTML = '🎩 ¡Miércoles de Clásicos! 🎩';
                 document.getElementById('modalText').innerHTML = 'Hoy disfrutá de nuestra carta especial con <strong>13 cocteles clásicos</strong> de la coctelería mundial. Gibson, Dry Martini, Aviation, Vesper y más. ¡Acércate a la barra para ordenar!';
             }
-            // JUEVES Y DOMINGO - Carta de promo
+            // JUEVES Y DOMINGO - Solo banner de promo, carta Tiki normal
             else if (dayType === 'promo') {
-                cocktailsToShow = promoCocktails;
-                foodToShow = regularFood;
-                cocktailsTitle.textContent = 'Promo 2x1 - Hoy';
-                classicSection.style.display = 'none';
+                cocktailsToShow = regularCocktails; // ← CARTA TIKI NORMAL
+                foodToShow = regularFood; // ← COMIDA NORMAL
+                cocktailsTitle.textContent = 'Nuestros Cocteles Tiki';
+                classicSection.style.display = 'block'; // ← MUESTRA TABLA DE CLÁSICOS
                 
                 banner.style.display = 'block';
                 banner.innerHTML = `
@@ -1298,6 +1298,3 @@
     </script>
 </body>
 </html>
-
-
-
