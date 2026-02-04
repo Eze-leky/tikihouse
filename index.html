@@ -783,7 +783,7 @@
     </footer>
 
     <script>
-        const TEST_MODE = true;
+        const TEST_MODE = false;
         const TEST_DAY = 'wednesday';
 
         const regularCocktails = [
@@ -887,28 +887,44 @@
 
         const wednesdayCocktails = [
             {
-                name: "Dry Martini",
-                price: "$10.000",
-                image: "./assets/img/trago3.jpeg",
-                ingredients: "Gin, Vermut Seco, Aceituna o twist de limón",
-                description: "El clásico por excelencia. Elegante, sofisticado y atemporal. Medida perfecta entre gin y vermut seco.",
-                profile: "Seco, Herbal"
-            },
-            {
                 name: "Gibson",
                 price: "$10.000",
                 image: "./assets/img/trago3.jpeg",
                 ingredients: "Gin, Vermut Seco, Cebollita en vinagre",
-                description: "Variación más elegante del Martini. Se distingue por llevar cebollita en vinagre.",
+                description: "La variación más elegante del Martini. Se distingue por llevar una cebollita en vinagre en lugar de aceituna.",
                 profile: "Seco, Herbal"
             },
             {
-                name: "Negroni",
-                price: "$8.000",
-                image: "./assets/img/esqueleto.jpg",
-                ingredients: "Gin, Campari, Vermut Rosso",
-                description: "Amargor perfecto. Clásico italiano que equilibra gin con Campari y vermut rojo. Intenso y sofisticado.",
-                profile: "Amargo, Equilibrado"
+                name: "Dry Martini",
+                price: "$10.000",
+                image: "./assets/img/trago3.jpeg",
+                ingredients: "Gin, Vermut Seco, Aceituna o twist de limón",
+                description: "El clásico por excelencia. Elegante, sofisticado y atemporal. La medida perfecta entre gin y vermut seco.",
+                profile: "Seco, Herbal"
+            },
+            {
+                name: "Gimlet",
+                price: "$10.000",
+                image: "./assets/img/oceanblue.jpg",
+                ingredients: "Gin, Jugo de Lima, Jarabe Simple",
+                description: "Clásico refrescante y directo. Gin con lima y un toque de dulzor. Simple pero sofisticado.",
+                profile: "Cítrico, Refrescante"
+            },
+            {
+                name: "Aviation Cocktail",
+                price: "$11.000",
+                image: "./assets/img/oceanblue.jpg",
+                ingredients: "Gin, Maraschino, Crème de Violette, Limón",
+                description: "Un clásico pre-prohibición con su característico color violeta cielo. Floral, elegante y misterioso.",
+                profile: "Floral, Cítrico"
+            },
+            {
+                name: "Vesper",
+                price: "$12.000",
+                image: "./assets/img/trago3.jpeg",
+                ingredients: "Gin, Vodka, Lillet Blanc",
+                description: "El Martini de James Bond. Fuerte, elegante y con carácter. Agitado, no revuelto.",
+                profile: "Seco, Potente"
             },
             {
                 name: "Manhattan",
@@ -927,60 +943,52 @@
                 profile: "Fuerte, Aromático"
             },
             {
-                name: "Whisky Sour",
-                price: "$15.000",
+                name: "Penicillin",
+                price: "$11.000",
                 image: "./assets/img/tropicalpunch.jpg",
-                ingredients: "Whisky, Limón, Azúcar, Clara de huevo, Angostura",
-                description: "Equilibrio perfecto entre dulce y ácido. Con espuma sedosa de clara que lo hace irresistible.",
-                profile: "Agridulce, Sedoso"
+                ingredients: "Whisky Escocés, Jengibre, Miel, Limón, Whisky Islay",
+                description: "Creación moderna que se volvió clásico instantáneo. Especiado, ahumado y curativo como su nombre indica.",
+                profile: "Especiado, Ahumado"
+            },
+            {
+                name: "Blood and Sand",
+                price: "$10.000",
+                image: "./assets/img/zombieee.jpg",
+                ingredients: "Whisky Escocés, Vermouth Rosso, Cherry Heering, Naranja",
+                description: "Clásico escocés inspirado en una película de 1922. Equilibrio perfecto entre dulce, amargo y frutal.",
+                profile: "Frutal, Equilibrado"
+            },
+            {
+                name: "Boulevardier",
+                price: "$10.000",
+                image: "./assets/img/esqueleto.jpg",
+                ingredients: "Bourbon, Campari, Vermut Rosso",
+                description: "El Negroni americano. Whisky bourbon en lugar de gin, creando un perfil más robusto y especiado.",
+                profile: "Amargo, Robusto"
             },
             {
                 name: "Pisco Sour",
                 price: "$15.000",
-                image: "./assets/img/oceanblue.jpg",
+                image: "./assets/img/kikuyaa.jpg",
                 ingredients: "Pisco, Limón, Jarabe, Clara de huevo, Angostura",
                 description: "El orgullo sudamericano. Refrescante, espumoso y con el carácter único del pisco.",
                 profile: "Cítrico, Espumoso"
             },
             {
-                name: "Mojito",
-                price: "$9.000",
-                image: "./assets/img/kikuyaa.jpg",
-                ingredients: "Ron Blanco, Menta, Lima, Azúcar, Soda",
-                description: "Cuba en un vaso. Refrescante, herbáceo y perfecto para cualquier ocasión.",
-                profile: "Refrescante, Herbáceo"
-            },
-            {
-                name: "Caipirinha",
-                price: "$9.000",
+                name: "Americano",
+                price: "$8.000",
                 image: "./assets/img/sharknuevo.jpg",
-                ingredients: "Cachaça, Lima, Azúcar",
-                description: "El trago nacional de Brasil. Simple, potente y delicioso. Lima machacada con cachaça y azúcar.",
-                profile: "Cítrico, Fuerte"
+                ingredients: "Campari, Vermut Rosso, Soda",
+                description: "El ancestro del Negroni. Refrescante y amargo, perfecto aperitivo italiano con un toque de soda.",
+                profile: "Amargo, Refrescante"
             },
             {
-                name: "Espresso Martini",
-                price: "$8.500",
+                name: "Clover Club",
+                price: "$10.000",
                 image: "./assets/img/sweet.jpg",
-                ingredients: "Vodka, Licor de Café, Espresso, Azúcar",
-                description: "Energía y sofisticación en cada sorbo. El café perfecto se encuentra con el vodka.",
-                profile: "Dulce, Energético"
-            },
-            {
-                name: "Margarita",
-                price: "$9.000",
-                image: "./assets/img/oceanblue.jpg",
-                ingredients: "Tequila, Triple Sec, Lima, Sal",
-                description: "El clásico mexicano que nunca falla. Perfecto equilibrio entre tequila, cítrico y dulzor, con borde salado.",
-                profile: "Cítrico, Salado"
-            },
-            {
-                name: "Cosmopolitan",
-                price: "$9.000",
-                image: "./assets/img/zombieee.jpg",
-                ingredients: "Vodka, Triple Sec, Arándano, Lima",
-                description: "Sofisticación en rosa. El coctel que conquistó Nueva York y el mundo. Elegante y delicioso.",
-                profile: "Frutal, Elegante"
+                ingredients: "Gin, Frambuesa, Limón, Clara de huevo, Jarabe",
+                description: "Clásico pre-prohibición con elegante espuma rosa. Frutal, sedoso y perfectamente equilibrado.",
+                profile: "Frutal, Sedoso"
             }
         ];
 
@@ -1129,22 +1137,22 @@
             
             // MIÉRCOLES - Solo banner, carta normal
             if (dayType === 'wednesday') {
-                cocktailsToShow = regularCocktails; // ← CARTA NORMAL
+                cocktailsToShow = wednesdayCocktails; // ← CARTA DE CLÁSICOS
                 foodToShow = regularFood; // ← COMIDA NORMAL
-                cocktailsTitle.textContent = 'Nuestros Cocteles Tiki';
-                classicSection.style.display = 'block'; // ← MUESTRA TABLA DE CLÁSICOS
+                cocktailsTitle.textContent = '🎩 Cocteles Clásicos de Miércoles';
+                classicSection.style.display = 'none'; // ← OCULTA TABLA (ya están en las cards)
                 
                 banner.style.display = 'block';
                 banner.innerHTML = `
-                    <div class="banner-content">
-                        <h2 style="color: var(--dark);">🎉 ¡PROMO MIÉRCOLES 2x1! 🎉</h2>
-                        <p style="font-weight: 600; font-size: 1.15rem; color: var(--darker);">2x1 en Daiquiris Frozen y Espresso Martini</p>
-                        <p style="color: var(--darker);">De 19:00 a 21:30hs</p>
+                    <div class="banner-content classic">
+                        <h2 style="color: #ECF0F1;">🎩 Miércoles de Clásicos 🎩</h2>
+                        <p style="font-weight: 600; font-size: 1.15rem; color: #ECF0F1;">Hoy disfrutá nuestra selección especial de coctelería clásica</p>
+                        <p style="color: #BDC3C7;">13 clásicos imperdibles de la historia de la coctelería</p>
                     </div>
                 `;
                 
-                document.getElementById('modalTitle').innerHTML = '🎉 ¡Promo Miércoles 2x1! 🎉';
-                document.getElementById('modalText').innerHTML = '<strong>Hoy de 19:00 a 21:30hs tenemos 2x1</strong> en Daiquiris Frozen Saborizados y Espresso Martini. ¡Acércate a la barra para ordenar!';
+                document.getElementById('modalTitle').innerHTML = '🎩 ¡Miércoles de Clásicos! 🎩';
+                document.getElementById('modalText').innerHTML = 'Hoy disfrutá de nuestra carta especial con <strong>13 cocteles clásicos</strong> de la coctelería mundial. Gibson, Dry Martini, Aviation, Vesper y más. ¡Acércate a la barra para ordenar!';
             }
             // JUEVES Y DOMINGO - Carta de promo
             else if (dayType === 'promo') {
@@ -1275,4 +1283,3 @@
     </script>
 </body>
 </html>
-
