@@ -115,6 +115,145 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
+        /* ====== TIKI HISTORY MODAL ====== */
+        .tiki-history-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.5s ease;
+            padding: 1rem;
+        }
+
+        .tiki-history-overlay.active {
+            display: flex;
+        }
+
+        .tiki-history-modal {
+            background: linear-gradient(160deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+            border: 2px solid rgba(255, 193, 7, 0.4);
+            border-radius: 30px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 3rem;
+            position: relative;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 193, 7, 0.2),
+                0 0 60px rgba(255, 107, 157, 0.15);
+            animation: slideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .tiki-history-modal::-webkit-scrollbar {
+            width: 8px;
+        }
+        .tiki-history-modal::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+        }
+        .tiki-history-modal::-webkit-scrollbar-thumb {
+            background: rgba(255, 107, 157, 0.4);
+            border-radius: 4px;
+        }
+
+        .tiki-history-close {
+            position: sticky;
+            top: 0;
+            float: right;
+            background: rgba(255, 78, 80, 0.3);
+            border: 1px solid rgba(255, 78, 80, 0.5);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+        }
+
+        .tiki-history-close:hover {
+            background: rgba(255, 78, 80, 0.6);
+            transform: scale(1.1);
+        }
+
+        .tiki-history-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-top: 0.5rem;
+        }
+
+        .tiki-history-header .tiki-icon {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 5px 15px rgba(255, 193, 7, 0.4));
+        }
+
+        .tiki-history-header h2 {
+            font-family: var(--font-fun);
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .tiki-history-header .subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+        }
+
+        .tiki-history-body p {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        .tiki-history-body .era-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--sunset));
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .tiki-history-body .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .tiki-history-footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 193, 7, 0.2);
+        }
+
+        .tiki-history-footer p {
+            font-family: var(--font-fun);
+            font-size: 1.3rem;
+            color: var(--accent);
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -370,11 +509,24 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 5px 20px rgba(255, 107, 157, 0.3);
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 1rem;
         }
 
         .feature-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 30px rgba(255, 107, 157, 0.5);
+        }
+
+        .feature-btn.tiki-btn {
+            background: linear-gradient(135deg, var(--accent), #e6a800);
+            color: var(--darker);
+        }
+
+        .feature-btn.tiki-btn:hover {
+            box-shadow: 0 8px 30px rgba(255, 193, 7, 0.5);
         }
 
         .section-title {
@@ -607,10 +759,10 @@
             }
 
             .cocktail-image { 
-    height: 280px;
-    object-fit: contain;
-    background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(15, 15, 30, 0.8));
-}
+                height: 280px;
+                object-fit: contain;
+                background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(15, 15, 30, 0.8));
+            }
             .cocktail-info { padding: 1.5rem; }
             .cocktail-name { font-size: 1.8rem; }
 
@@ -624,6 +776,26 @@
             .modal-content p { font-size: 1rem; }
 
             .menu-table th, .menu-table td { padding: 1rem; }
+
+            /* Tiki History Modal responsive */
+            .tiki-history-modal {
+                padding: 2rem 1.5rem;
+                max-height: 90vh;
+                border-radius: 20px;
+            }
+
+            .tiki-history-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .tiki-history-header .tiki-icon {
+                font-size: 3rem;
+            }
+
+            .tiki-history-body p {
+                font-size: 0.95rem;
+                text-align: left;
+            }
         }
 
         @media (max-width: 480px) {
@@ -632,6 +804,8 @@
             .logo { font-size: 1.5rem; }
             .banner-content h2 { font-size: 1.4rem; }
             cocktail-image { height: 300px;}
+
+            .tiki-history-header h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -643,6 +817,44 @@
             <h2 id="modalTitle">🌴 ¡Bienvenidos a Tiki House! 🌴</h2>
             <p id="modalText">Cuando estés list@ para ordenar, acércate a la barra. ¡Prepárate para vivir el paraíso tropical!</p>
             <button class="modal-btn" onclick="closeModal()">¡Vamos! 🍹</button>
+        </div>
+    </div>
+
+    <!-- TIKI HISTORY MODAL -->
+    <div id="tikiHistoryOverlay" class="tiki-history-overlay" onclick="closeTikiHistory(event)">
+        <div class="tiki-history-modal" onclick="event.stopPropagation()">
+            <button class="tiki-history-close" onclick="closeTikiHistory()">&times;</button>
+            
+            <div class="tiki-history-header">
+                <span class="tiki-icon">🗿</span>
+                <h2>¿Qué es el Tiki?</h2>
+                <p class="subtitle">La historia detrás del paraíso tropical</p>
+            </div>
+            
+            <div class="tiki-history-body">
+                <span class="era-tag">🥃 1934 — Los Orígenes</span>
+                <p>En 1934, justo después de que terminara la Ley Seca en EE. UU., <span class="highlight">Ernest Gantt</span> pasó de vender ron ilegalmente a operar un pequeño bar en Hollywood, Los Ángeles. Llamó a su lugar <span class="highlight">Donn's Beachcomber</span> (que luego se convertiría en Don the Beachcomber) y comenzó a crear lo que se conocería como sus "Rhapsodies de Ron": cócteles fuertes, exóticos y a base de ron, con ingredientes misteriosos mantenidos en secreto para todos, incluido el personal.</p>
+                
+                <p>Junto con su estética de explorador de playas, las bebidas y la atmósfera resultaban muy atractivas para sus clientes. Incluso estrellas de cine como <span class="highlight">Charlie Chaplin</span> y otros hacían fila para poder entrar.</p>
+                
+                <span class="era-tag">🌴 Trader Vic's — La Leyenda Crece</span>
+                <p>No mucho después, <span class="highlight">Vic Bergeron</span> visitó el lugar de Don y decidió que ese estilo e idea eran lo que quería para transformar su propio local. En ese momento se llamaba Hinky Dinks, pero el nombre del establecimiento fue cambiado a <span class="highlight">Trader Vic's</span>, y así nació otra leyenda.</p>
+                
+                <span class="era-tag">🎖️ Post-Guerra — La Explosión Tiki</span>
+                <p>A medida que los años 30 dieron paso a mediados de los 40, con los soldados regresando a casa tras la guerra y con historias de tierras exóticas y lejanas, la ideología evolucionó aún más hacia el estilo Tiki, incorporando ídolos polinesios a la estética tropical que estos lugares ya estaban construyendo. Lugares imitadores comenzaron a surgir por todo el país, y los bares y restaurantes Tiki se volvieron una moda. La gente no se cansaba del escapismo, la atmósfera y las potentes combinaciones como el <span class="highlight">Don's Zombie</span> y el <span class="highlight">Mai Tai</span> de Vic.</p>
+                
+                <span class="era-tag">🌺 1960s — Tiki en Todas Partes</span>
+                <p>Para la década de 1960, el estilo Tiki estaba en todas partes, infiltrándose en los gustos musicales, la arquitectura, la moda y, por supuesto, más que nada, en las elecciones de bebidas. Finalmente, después de más de 40 años, este increíble fenómeno cultural pop comenzó a desvanecerse frente a la guerra de Vietnam, el movimiento hippie y otras circunstancias sociales.</p>
+                
+                <span class="era-tag">🔥 El Renacimiento</span>
+                <p>Pero como todas las grandes cosas del pasado, eventualmente resurgió en su propia forma underground, y hoy ha desarrollado un fuerte renacimiento con bares y restaurantes Tiki apareciendo en todo el mundo, junto con coleccionistas de mugs Tiki, eventos de fin de semana y mucho más.</p>
+                
+                <p>Así que <span class="highlight">bienvenido a Tiki House</span>, concebido con la pasión de recrear cómo habría sido encontrarse con un auténtico establecimiento Tiki de mediados del siglo pasado. Todas nuestras bebidas clásicas se elaboran lo más fiel posible a sus recetas originales, desde las fórmulas hasta la decoración y la cristalería. La atmósfera, la música y lo visual están sacados de una cápsula del tiempo, así que disfrutá… porque escapar siempre fue de lo que se trató todo esto.</p>
+            </div>
+            
+            <div class="tiki-history-footer">
+                <p>🌺 Escapar siempre fue de lo que se trató 🍹</p>
+            </div>
         </div>
     </div>
 
@@ -675,11 +887,17 @@
             <div class="cards-grid">
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🗿</div>
+                    <h3>¿Qué es el Tiki?</h3>
+                    <p>Descubrí la fascinante historia detrás de la cultura Tiki, desde Hollywood en los años 30 hasta hoy.</p>
+                    <button class="feature-btn tiki-btn" onclick="openTikiHistory()">Conocer la Historia 🌺</button>
+                </div>
+                <div class="feature-card fade-in" style="animation-delay: 0.1s">
+                    <div class="feature-icon">🗿</div>
                     <h3>Tiki Mugs</h3>
                     <p>¡Llevate un recuerdo único! Elegí el Tiki Mug que más te guste y hacelo tuyo.</p>
                     <a href="./mugs/index.html" class="feature-btn">Elegir Mug</a>
                 </div>
-                <div class="feature-card fade-in" style="animation-delay: 0.1s">
+                <div class="feature-card fade-in" style="animation-delay: 0.2s">
                     <div class="feature-icon">🍹</div>
                     <h3>Curso de Bartenders</h3>
                     <p>Aprendé con nosotros sobre el mundo de la coctelería. ¡Convertite en un experto!</p>
@@ -791,21 +1009,10 @@
         // ============================================
         // MODO DE PRUEBA
         // ============================================
-        // Para probar los diferentes días:
-        // 1. Cambia TEST_MODE a true
-        // 2. Cambia TEST_DAY a uno de estos valores:
-        //    - 'wednesday' = Ver carta de clásicos (Miércoles)
-        //    - 'promo' = Ver promo 2x1 (Jueves/Domingo)
-        //    - 'regular' = Ver carta tiki normal
-        // 3. Guarda el archivo
-        // 4. Refresca la página (F5 o Ctrl+R)
-        // 5. Abre la Consola (F12) para ver los logs
-        // ============================================
-        
-        const TEST_MODE = false;  // ← Cambia a true para activar modo prueba
-        const TEST_DAY = 'wednesday';  // ← Cambia a: 'wednesday', 'promo', o 'regular'
+        const TEST_MODE = false;
+        const TEST_DAY = 'wednesday';
 
-        // Cocktails Data - CARTA REGULAR (Lunes, Martes, Viernes, Sábado)
+        // Cocktails Data - CARTA REGULAR
         const regularCocktails = [
             {
                 name: "Zombie",
@@ -879,14 +1086,6 @@
                 description: "Dulce, con explosión de sabores para que luego tengas Dulces Sueños.",
                 profile: "Dulce"
             },
-        //    {
-        //        name: "Darnk & Stormy",
-        //        price: "$8.500",
-        //        image: "./assets/img/dark.jpg",
-        //        ingredients: "Ron, Lima, Ginger beer",
-        //        description: "Clásico caribeño, intenso y refrescante. Combina ron oscuro con cerveza de jengibre y un toque de lima, logrando un equilibrio perfecto entre picante, dulce y cítrico. Ideal para quienes buscan un trago con carácter y mucha personalidad",
-        //        profile: "Citrico, refrescante, con un leve picor."
-        //    },
             {
                 name: "Tiki Bang",
                 price: "$9.500",
@@ -911,7 +1110,6 @@
                 description: "Explosión tropical que te transporta a el paraiso tropical en cada sorbo",
                 profile: "Citrico equilibrado. "
             },
-            
             {
                 name: "Blood of the Kapu Tiki",
                 price: "$18.000",
@@ -1059,7 +1257,6 @@
                 description: "Clásico equilibrado con matices tropicales, cítrico y almendras. Creado por Trader Vic's en 1944.",
                 profile: "Cítrico"
             }
-            
         ];
 
         const promoCocktails = [
@@ -1121,70 +1318,86 @@
         ];
 
         const regularFood = {
-    pizzas: [
-        { name: "Mozzarella", price: "$16.000" },
-        { name: "Especial", price: "$18.000" },
-        { name: "Roquefort", price: "$22.000" }
-    ],
-    burgers: [
-        { name: "Clásica (Medallón 120gr, Queso Cheddar)", price: "$16.000" },
-        { name: "Completa (Medallón 120gr, Jamón, Queso, Huevo, Lechuga, Tomate)", price: "$20.000" },
-        { name: "Big Tiki (Doble Medallón, Cheddar, Cebolla, Lechuga)", price: "$25.000" }
-    ],
-    fries: [
-        { name: "Papas Tiki (Cheddar, Bacon, Verdeo)", price: "$15.000" },
-        { name: "Cheddar", price: "$13.000" },
-        { name: "Spicy", price: "$10.000" },
-        { name: "Clásicas (Salsa a elección)", price: "$10.000" }
-    ],
-    appetizers: [
-        { name: "Tequeños x6", price: "$10.000" },
-        { name: "Tequeños x12", price: "$18.000" },
-        { name: "Focaccia, mortadella, queso, Aji en vinagre", price: "$12.000" }
-    ],
-    snacks: [
-        { name: "Maní tipo cervecero", price: "$5.000" },
-        { name: "Olivas", price: "$5.000" },
-        { name: "Picadita (Queso, salamin, Olivas)", price: "$5.000" }
-    ],
-           Postre: [
-       { name: "Panqueques con Dulce de Leche (2 Unidades)", price: "$8.000" },
-        
-  ]
-};
+            pizzas: [
+                { name: "Mozzarella", price: "$16.000" },
+                { name: "Especial", price: "$18.000" },
+                { name: "Roquefort", price: "$22.000" }
+            ],
+            burgers: [
+                { name: "Clásica (Medallón 120gr, Queso Cheddar)", price: "$16.000" },
+                { name: "Completa (Medallón 120gr, Jamón, Queso, Huevo, Lechuga, Tomate)", price: "$20.000" },
+                { name: "Big Tiki (Doble Medallón, Cheddar, Cebolla, Lechuga)", price: "$25.000" }
+            ],
+            fries: [
+                { name: "Papas Tiki (Cheddar, Bacon, Verdeo)", price: "$15.000" },
+                { name: "Cheddar", price: "$13.000" },
+                { name: "Spicy", price: "$10.000" },
+                { name: "Clásicas (Salsa a elección)", price: "$10.000" }
+            ],
+            appetizers: [
+                { name: "Tequeños x6", price: "$10.000" },
+                { name: "Tequeños x12", price: "$18.000" },
+                { name: "Focaccia, mortadella, queso, Aji en vinagre", price: "$12.000" }
+            ],
+            snacks: [
+                { name: "Maní tipo cervecero", price: "$5.000" },
+                { name: "Olivas", price: "$5.000" },
+                { name: "Picadita (Queso, salamin, Olivas)", price: "$5.000" }
+            ],
+            Postre: [
+                { name: "Panqueques con Dulce de Leche (2 Unidades)", price: "$8.000" }
+            ]
+        };
 
         const wednesdayFood = {
-    pizzas: [
-        { name: "Margherita Clásica", price: "$16.000" },
-        { name: "Cuatro Quesos", price: "$20.000" },
-        { name: "Napolitana", price: "$18.000" }
-    ],
-    burgers: [
-        { name: "Clásica (Medallón 120gr, Queso)", price: "$16.000" },
-        { name: "Completa (Jamón, Queso, Huevo, Lechuga, Tomate)", price: "$20.000" },
-        { name: "Bacon Deluxe (Doble Medallón, Bacon, Cheddar)", price: "$25.000" }
-    ],
-    fries: [
-        { name: "Papas Clásicas", price: "$10.000" },
-        { name: "Con Cheddar", price: "$13.000" },
-        { name: "Con Bacon y Verdeo", price: "$15.000" }
-    ],
-    appetizers: [
-        { name: "Tequeños x6", price: "$10.000" },
-        { name: "Tequeños x12", price: "$18.000" },
-        { name: "Focaccia, mortadella, queso, Aji en vinagre", price: "$12.000" }
-        
-    ],
-    snacks: [
-        { name: "Maní tipo cervecero", price: "$5.000" },
-        { name: "Olivas", price: "$5.000" },
-        { name: "Picadita (Queso, salamin, Olivas)", price: "$5.000" }
-    ],
+            pizzas: [
+                { name: "Margherita Clásica", price: "$16.000" },
+                { name: "Cuatro Quesos", price: "$20.000" },
+                { name: "Napolitana", price: "$18.000" }
+            ],
+            burgers: [
+                { name: "Clásica (Medallón 120gr, Queso)", price: "$16.000" },
+                { name: "Completa (Jamón, Queso, Huevo, Lechuga, Tomate)", price: "$20.000" },
+                { name: "Bacon Deluxe (Doble Medallón, Bacon, Cheddar)", price: "$25.000" }
+            ],
+            fries: [
+                { name: "Papas Clásicas", price: "$10.000" },
+                { name: "Con Cheddar", price: "$13.000" },
+                { name: "Con Bacon y Verdeo", price: "$15.000" }
+            ],
+            appetizers: [
+                { name: "Tequeños x6", price: "$10.000" },
+                { name: "Tequeños x12", price: "$18.000" },
+                { name: "Focaccia, mortadella, queso, Aji en vinagre", price: "$12.000" }
+            ],
+            snacks: [
+                { name: "Maní tipo cervecero", price: "$5.000" },
+                { name: "Olivas", price: "$5.000" },
+                { name: "Picadita (Queso, salamin, Olivas)", price: "$5.000" }
+            ],
             Postre: [
-       { name: "Panqueques con Dulce de Leche (2 Unidades)", price: "$8.000" },
-        
-    ]
-};
+                { name: "Panqueques con Dulce de Leche (2 Unidades)", price: "$8.000" }
+            ]
+        };
+
+        // ====== TIKI HISTORY FUNCTIONS ======
+        function openTikiHistory() {
+            document.getElementById('tikiHistoryOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTikiHistory(event) {
+            if (event && event.target !== event.currentTarget && !event.target.classList.contains('tiki-history-close')) return;
+            document.getElementById('tikiHistoryOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeTikiHistory();
+            }
+        });
 
         function getDayType() {
             if (TEST_MODE) {
@@ -1196,13 +1409,11 @@
             const dayNames = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
             console.log('📅 Hoy es:', dayNames[day]);
             
-            // Miércoles = Solo banner de promo, carta normal
             if (day === 3) {
                 console.log('🎉 Miércoles - Banner de Promo 2x1');
                 return 'wednesday';
             }
             
-            // Jueves y Domingo = Carta completa de promo
             if (day === 4 || day === 0) {
                 console.log('🎉 Jueves/Domingo - Carta de Promo 2x1');
                 return 'promo';
@@ -1225,12 +1436,11 @@
             banner.style.display = 'none';
             banner.innerHTML = '';
             
-            // MIÉRCOLES - Solo banner, carta normal
             if (dayType === 'wednesday') {
-                cocktailsToShow = wednesdayCocktails; // ← CARTA DE CLÁSICOS
-                foodToShow = regularFood; // ← COMIDA NORMAL
+                cocktailsToShow = wednesdayCocktails;
+                foodToShow = regularFood;
                 cocktailsTitle.textContent = '🎩 Cocteles Clásicos de Miércoles';
-                classicSection.style.display = 'none'; // ← OCULTA TABLA (ya están en las cards)
+                classicSection.style.display = 'none';
                 
                 banner.style.display = 'block';
                 banner.innerHTML = `
@@ -1244,12 +1454,11 @@
                 document.getElementById('modalTitle').innerHTML = '🎩 ¡Miércoles de Clásicos! 🎩';
                 document.getElementById('modalText').innerHTML = 'Hoy disfrutá de nuestra carta especial con <strong>13 cocteles clásicos</strong> de la coctelería mundial. ¡Acércate a la barra para ordenar!';
             }
-            // JUEVES Y DOMINGO - Solo banner de promo, carta Tiki normal
             else if (dayType === 'promo') {
-                cocktailsToShow = regularCocktails; // ← CARTA TIKI NORMAL
-                foodToShow = regularFood; // ← COMIDA NORMAL
+                cocktailsToShow = regularCocktails;
+                foodToShow = regularFood;
                 cocktailsTitle.textContent = 'Nuestros Cocteles Tiki';
-                classicSection.style.display = 'block'; // ← MUESTRA TABLA DE CLÁSICOS
+                classicSection.style.display = 'block';
                 
                 banner.style.display = 'block';
                 banner.innerHTML = `
@@ -1263,7 +1472,6 @@
                 document.getElementById('modalTitle').innerHTML = '🎉 ¡Promo 2x1! 🎉';
                 document.getElementById('modalText').innerHTML = '<strong>Hoy de 19:00 a 21:30hs tenemos 2x1</strong> en Daiquiris Frozen Saborizados y Espresso Martini. ¡Acércate a la barra!';
             }
-            // DÍAS REGULARES
             else {
                 cocktailsTitle.textContent = 'Nuestros Cocteles Tiki';
                 classicSection.style.display = 'block';
@@ -1333,13 +1541,12 @@
                 </tbody>
                 </table>
 
- <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🍰 Postre</h3>
-<table class="menu-table fade-in">
-    <tbody>
-   ${foodMenu.Postre.map(item => `<tr><td>${item.name}</td><td class="price">${item.price}</td></tr>`).join('')}
-    </tbody>
-</table>
-                
+                <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🍰 Postre</h3>
+                <table class="menu-table fade-in">
+                    <tbody>
+                    ${foodMenu.Postre.map(item => `<tr><td>${item.name}</td><td class="price">${item.price}</td></tr>`).join('')}
+                    </tbody>
+                </table>
             `;
         }
 
@@ -1388,33 +1595,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
