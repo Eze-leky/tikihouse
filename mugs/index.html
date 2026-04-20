@@ -124,6 +124,26 @@
             max-height: 70vh;
             object-fit: contain;
         }
+
+        /* Animación de pulso para el badge promocional */
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(34, 197, 94, 0.8);
+            }
+        }
+
+        .promo-badge {
+            animation: pulse-glow 2s infinite;
+        }
+
+        /* Banner promocional sticky */
+        .promo-banner {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -142,7 +162,17 @@
         </div>
     </nav>
 
-    <header class="hero-bg min-h-[80vh] flex items-center justify-center text-center px-6 pt-20 relative overflow-hidden">
+    <!-- Banner Promocional -->
+    <div class="promo-banner fixed top-[72px] left-0 right-0 z-40 py-3 px-6 text-center">
+        <div class="flex items-center justify-center gap-2 text-white font-bold">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 animate-bounce">
+                <path fill-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm md:text-base">🍹 ¡PROMO ESPECIAL! Comprá tu Tiki Mug y <span class="underline">llevate GRATIS</span> el cóctel que va en ese vaso 🍹</span>
+        </div>
+    </div>
+
+    <header class="hero-bg min-h-[80vh] flex items-center justify-center text-center px-6 pt-32 relative overflow-hidden">
         <div class="max-w-4xl mx-auto z-10 relative">
             <span class="inline-block mb-4 text-amber-500 tracking-[0.3em] text-xs font-bold uppercase">Ediciones Limitadas de Cerámica</span>
             <h1 class="font-tiki text-6xl md:text-8xl mb-6 text-amber-400 leading-tight drop-shadow-2xl">
@@ -180,7 +210,7 @@
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
         </div>
-        <p class="text-stone-600 text-sm">© 2026 Guardium Security. La Plata, Argentina. <br>Hecho con <span class="text-red-800">❤</span> y mucho Ron.</p>
+        <p class="text-stone-600 text-sm">© 2026 Tiki House. La Plata, Argentina. <br>Hecho con <span class="text-red-800">❤</span> y mucho Ron.</p>
     </footer>
 
     <!-- Modal mejorado con tabs -->
@@ -235,16 +265,16 @@
         const products = [
             { 
                 name: "Zombie", 
-                price: "30.000", 
+                price: "35.000", 
                 img: "img/zombie.jpg", 
-                video: "videos/vzombie.mp4", // Agrega tu video aquí
+                video: "videos/vzombie.mp4",
                 wa_link: "Zombie!", 
                 tag: "Clásico", 
                 inStock: true 
             },
             { 
                 name: "Shark Attack", 
-                price: "40.000", 
+                price: "45.000", 
                 img: "img/sharknuevo.jpg", 
                 video: "videos/shark.mp4",
                 wa_link: "Shark!", 
@@ -253,7 +283,7 @@
             },
             { 
                 name: "Dr. Funk", 
-                price: "30.000", 
+                price: "35.000", 
                 img: "img/funk.jpg", 
                 video: "videos/funk.mp4",
                 wa_link: "Dr.%20Funk!", 
@@ -261,7 +291,7 @@
             },
             { 
                 name: "Sunset Spirit", 
-                price: "30.000", 
+                price: "35.000", 
                 img: "img/risas.jpg", 
                 video: "videos/sunset.mp4",
                 wa_link: "Sunset%20Spirit!", 
@@ -269,7 +299,7 @@
             },
             { 
                 name: "Esqueleto", 
-                price: "30.000", 
+                price: "35.000", 
                 img: "img/esqueleto.jpg", 
                 video: "videos/vskull.mp4",
                 wa_link: "Mug%20Esqueleto!", 
@@ -278,7 +308,7 @@
             },
             { 
                 name: "Maui God", 
-                price: "30.000", 
+                price: "35.000", 
                 img: "img/moha.jpg", 
                 video: "videos/vkikuya.mp4",
                 wa_link: "Mug%20Maui!", 
@@ -286,7 +316,7 @@
             },
             { 
                 name: "Zombie V2", 
-                price: "30.000", 
+                price: "35.000", 
                 img: "img/zombie2.jpeg", 
                 video: "videos/zombie2.mp4",
                 wa_link: "Zombie2!", 
@@ -295,15 +325,16 @@
             },
             { 
                 name: "Kanaloa", 
-                price: "20.000", 
+                price: "25.000", 
                 img: "img/kanaloaa.jpg", 
                 video: "videos/kanaloa.mp4",
                 wa_link: "Kanaloa!", 
                 detail: "Oferta Especial", 
                 inStock: true 
-            },{ 
+            },
+            { 
                 name: "Coco", 
-                price: "30.000", 
+                price: "35.000", 
                 img: "img/coco.jpeg", 
                 video: "videos/coco.mp4",
                 wa_link: "Coco", 
@@ -324,6 +355,15 @@
             } else if (!product.inStock) {
                 tagHTML = `<span class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full z-20 shadow-lg">Sin Stock</span>`;
             }
+
+            // Badge promocional
+            const promoBadge = product.inStock ? `
+                <div class="absolute bottom-4 left-4 right-4 z-20">
+                    <div class="promo-badge bg-gradient-to-r from-green-500 to-emerald-600 text-white text-xs font-bold px-3 py-2 rounded-full text-center">
+                        🍹 + Cóctel Gratis
+                    </div>
+                </div>
+            ` : '';
 
             const stockClass = product.inStock ? '' : 'out-of-stock';
 
@@ -353,6 +393,7 @@
                 <div class="premium-card ${stockClass} rounded-3xl p-4 group transition-all duration-500 relative">
                     <div class="relative overflow-hidden rounded-2xl aspect-[4/5] mb-5 bg-stone-900/50">
                         ${tagHTML}
+                        ${promoBadge}
                         <div class="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60 z-10 pointer-events-none"></div>
                         ${!product.inStock ? '<div class="absolute inset-0 bg-black/40 z-10 flex items-center justify-center pointer-events-none"><span class="text-white font-bold text-2xl opacity-80 rotate-[-15deg] transform">AGOTADO</span></div>' : ''}
                         <img src="${product.img}" alt="${product.name}" 
