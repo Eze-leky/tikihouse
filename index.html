@@ -1551,13 +1551,15 @@
                 </tbody>
                 </table>
 
-            //    <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🍰 Postre</h3>
-              //  <table class="menu-table fade-in">
-                //    <tbody>
-                  //  ${foodMenu.Postre.map(item => `<tr><td>${item.name}</td><td class="price">${item.price}</td></tr>`).join('')}
-                   // </tbody>
-             //   </table>
-            `;
+            ${foodMenu.Postre ? `
+    <h3 style="font-family: var(--font-fun); font-size: 2rem; margin-top: 3rem; color: var(--primary); text-align: center;">🍰 Postre</h3>
+    <table class="menu-table fade-in">
+        <tbody>
+        ${foodMenu.Postre.map(item => `<tr><td>${item.name}</td><td class="price">${item.price}</td></tr>`).join('')}
+        </tbody>
+    </table>
+` : ''}
+ `;
         }
 
         function closeModal() {
