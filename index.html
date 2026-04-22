@@ -1256,6 +1256,14 @@
                 ingredients: "Ron de Jamaica, Orgeat, Lima, Orange Curaçao",
                 description: "Clásico equilibrado con matices tropicales, cítrico y almendras. Creado por Trader Vic's en 1944.",
                 profile: "Cítrico"
+            },
+            {
+                name: "Mojito",
+                price: "$9.500",
+                image: "./assets/img/mojito.jpeg",
+                ingredients: "Ron de Cuba, Menta, Lima, Soda",
+                description: "Clásico coctel que no debe faltar en ninguna carta, menos en un bar del estilo Tiki.",
+                profile: "Agricudlce - Refrescante"
             }
         ];
 
@@ -1343,10 +1351,11 @@
                 { name: "Maní tipo cervecero", price: "$5.000" },
                 { name: "Olivas", price: "$5.000" },
                 { name: "Picadita (Queso, salamin, Olivas)", price: "$5.000" }
-            ],
-            Postre: [
-                { name: "Panqueques con Dulce de Leche (2 Unidades)", price: "$8.000" }
             ]
+            //,
+            //Postre: [
+              //  { name: "Panqueques con Dulce de Leche (2 Unidades)", price: "$8.000" }
+         //   ]
         };
 
         const wednesdayFood = {
@@ -1440,7 +1449,7 @@
                 cocktailsToShow = wednesdayCocktails;
                 foodToShow = regularFood;
                 cocktailsTitle.textContent = '🎩 Cocteles Clásicos de Miércoles';
-                classicSection.style.display = 'none';
+                classicSection.style.display = 'block';
                 
                 banner.style.display = 'block';
                 banner.innerHTML = `
